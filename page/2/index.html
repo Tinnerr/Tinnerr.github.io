@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>Página 2 | 靳平的博客</title>
-  <meta name="author" content="John Doe" />
+  <title>Seite 2 | 靳平的博客</title>
+  <meta name="author" content="jinping Tinner" />
 
   
 
@@ -56,6 +56,87 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-31T08:40:58.000Z"><a href="/2015/07/31/慎用重载/">2015-07-31</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/07/31/慎用重载/">慎用重载</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>重载：在同一个类的内部，方法名字相同，参数列表不同的方法，称之为方法的重载。 与返回类型无关。<br>参数列表不同：个数不同、类型不同、顺序不同<br>要调用哪个重载方法是在编译时做出决定的,对于重载方法的选择是静态的,而对于被覆盖的方法的选择是动态的,选择被覆盖的方法的正确版本是在运行时进行的,选择的依据是被调用方法所在的对象的运行时类型,<br>子类重写父类的方法覆盖):当一个子类包含的方法的声明与祖先类中的方法声明具有同样的签名时,父类的方法就被覆盖了,如果方法是在该子类的实例上被调用的,那么子类的覆盖方法将被执行.<br>但是,应该避免胡乱地使用重载机制:安全而保守的策略是:永远不要导出两个具有想同参数数目的重载方法,也就是说始终给方法起不同的名称,而不使用重载机制.一般情况下,对于多个具有相同参数数目的方法来说,应该尽量避免重载方法,如果正在改造一个现有的类以实现新的接口,就应该保证当传递同样的参数时,所有重载方法的行为必须一致.</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java注意事项/">java注意事项</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-22T10:27:27.000Z"><a href="/2015/07/22/覆盖equals时请遵守通用约定/">2015-07-22</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/07/22/覆盖equals时请遵守通用约定/">覆盖equals时请遵守通用约定</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Object类虽然是一个具体类，但是设计它主要是为了扩展，它的所有非final方法（equals、hashCode、toString、finalize）都是被设计成是要被覆盖的。<br>不必覆盖equals方法的情况：<br>    1.类的每个实例本质上都是唯一的；<br>    2.不关心类是否提供了“逻辑相等”的测试功能；<br>    3.超类已经覆盖了equals，从超类继承过来的行为对于子类也是合适的；<br>    4.类是私有的或是包级私有的，可以确定它的equals方法永远不会被调用。<br>什么时候需要覆盖？<br>     如果类具有自己独特的“逻辑相等”概念（不同于对象等同的概念），而且超类还没有覆盖equals以实现期望的行为，此时需覆盖equals方法。<br>在覆盖equals方法时，必须遵守的约定：<br>1.自反性：对于任何非null的引用值x，x.equals(x)必须返回true;<br>2.对称性：对于任何非null的引用值x和y,当且仅当y.equals(x)返回true时，x.equals(y)必须返回true;<br>3.传递性：对于任何非null的引用值x,y和z,如果x.equals(y)和y.equals(z)都返回true，那么x.equals(z)也必须返回true;<br>4.一致性：对于任何非null的引用值x和y,只要equals的比较操作在对象中所用的信息没有被修改，多次调用x.equals(y)就会一致地返回true，或者一致地返回false。<br>综合以上所有的要求，实现高质量equals方法的的诀窍：<br>1.使用==操作符检查“参数是否为这个对象的引用”。这只是一种性能优化，如果操作有可能昂贵，就值得这么做；<br>2.使用instanceof操作符检查“参数是否为正确的类型”；<br>3.把参数转换成正确的类型；<br>4.对于该类中的每个“关键”域，检查参数中的域是否与该对象中对应的域相匹配；<br>5.当编写完equals方法之后，应该检查它是否是对称的、传递的、一致的。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
   <article class="post">
   
   <div class="post-content">
@@ -212,7 +293,7 @@
 <nav id="pagination">
   
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; Anterior</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Vorherige Seite</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 </nav>
@@ -220,7 +301,7 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Buscar">
+    <input type="search" name="q" results="0" placeholder="Suche">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
@@ -229,7 +310,7 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Entradas Recientes</h3>
+  <h3 class="title">Neueste Artikel</h3>
   <ul class="entry">
     
       <li>
@@ -258,7 +339,7 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Etiquetas</h3>
+  <h3 class="title">Tags</h3>
   <ul class="entry">
   
     <li><a href="/tags/java优化/">java优化</a><small>3</small></li>
@@ -271,7 +352,7 @@
 
   
 <div class="widget tagcloud">
-  <h3 class="title">Nube de Etiquetas</h3>
+  <h3 class="title">Tag-Cloud</h3>
   <div class="entry">
     <a href="/tags/java优化/" style="font-size: 10px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 20px;">java注意事项</a>
   </div>
@@ -283,7 +364,7 @@
   <footer id="footer" class="inner"><div class="alignleft">
   <p>
   
-  &copy; 2018 John Doe
+  &copy; 2018 jinping Tinner
   
   All rights reserved.</p>
   <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
