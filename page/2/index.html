@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>Seite 2 | 靳平的博客</title>
+  <title>Página 2 | 靳平的博客</title>
   <meta name="author" content="John Doe" />
 
   
@@ -62,6 +62,120 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-07-21T08:51:58.000Z"><a href="/2015/07/21/消除过期对象的引用/">2015-07-21</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/07/21/消除过期对象的引用/">消除过期对象的引用</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>本节先引入一个栈实现的例子，如果一个栈先增长，再收缩，那么从栈中弹出来的对象将不会被当作垃圾回收。这是因为栈内部维护着对这些对象的过期引用。<br>清空过期引用的方法：将这些过期引用清空即可（即element = null）。从而不会浪费内存，如果以后他们又被错误地引用，则会抛出空指针异常。能使我们很好的发现程序运行中出现的问题。<br>但是清空对象引用不能常用，它应该只是一种例外，而不是一种规范行为。消除过期引用最好的方法是让包含该引用的变量结束其生命周期。<br>内存泄漏的三个常见来源：<br>     1.警惕那些自己管理内存的类；<br>     2.缓存                                  ；<br>     3.监听器和其他回调。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-20T08:29:31.000Z"><a href="/2015/07/20/接口优于抽象类/">2015-07-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/07/20/接口优于抽象类/">接口优于抽象类</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>首先比较接口和抽象类：相同点：两者都可以用来定义允许多个实现的类型。<br> 不同点：抽象类允许包含某些方法的实现，但是接口则不允许。<br>      而java作为只允许单继承的语言，抽象类作为类型定义受到了极大的限制，如果右抽象类定义类型，那么实现其功能的类必须成为它的子类。<br>其次，接口相对于抽象类有三方面优势：<br>1.现有的类可以很容易被更新，以实现新的接口；<br>2.接口是定义mixin（混合类型）的理想选择；<br>3.接口允许我们构造非层次结构的类型框架<br>       使用接口不允许包含方法的实现，但是可以通过对导出的每个重要的接口都提供一个抽象的骨架实现类，把接口和抽象类的优点结合起来，使用骨架实现既可以为抽象类提供实现上的帮助，也不强加“抽象类型被用作类型定义时”所特有的严格限制。<br>       如何编写骨架实现类：.必须先研究接口，确定哪些方法是最基本的，这些基本方法成为骨架实现类的抽象方法，然后必须为接口中所有其他方法提供具体的实现。<br>       抽象类相对于接口也有其一定的优势：抽象类的演变比接口的演变要容易的多。接口一旦被公开发行并且已被广泛使用，再想改变这个接口几乎是不可能的。在发行接口的时候，最好是在接口被“冻结”之前尽可能让更多的程序员用尽可能多的方式去实现这个新接口。<br>       接口通常是定义允许多个实现的类型的最佳途径，当演变的容易性比功能更为重要的时候，应当使用抽象类来定义类型</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-18T08:25:02.000Z"><a href="/2015/07/18/for-each循环优于传统的for循环/">2015-07-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/07/18/for-each循环优于传统的for循环/">for-eachu循环优于传统的for循环</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>在jdk1.5之前对集合只能通过for循环或者迭代器的形式去遍历，而且极有可能会出错，尤其是嵌套多层循环，往往会产生混乱。<br>jdk1.5推出for-each循环，通过完全隐藏迭代器或者索引变量，避免了混乱和出错的可能。for-each循环不仅能遍历集合和数组，还能遍历任何实现Iterable接口的对象。<br>for-each循环在简洁性和预防bug方面有着传统的for循环无法比拟的优势，并且没有性能损失。<br>但是有三种情况无法使用for-each：<br>1.过滤。2.转换 这两种情况使用元素中的方法，此时必须使用显性的迭代器或索引<br>3平行迭代。如果需要并行地遍历多个集合，就需要显示的控制迭代器或者索引，以便所有迭代器或者索引变量都可以同步前移。<br>以上三种情况，必须使用普通的for循环。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-07-10T09:55:29.000Z"><a href="/2015/07/10/关于java/">2015-07-10</a></time>
       
       
@@ -98,7 +212,7 @@
 <nav id="pagination">
   
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; Vorherige Seite</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Anterior</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 </nav>
@@ -106,7 +220,7 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="search" name="q" results="0" placeholder="Buscar">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
@@ -115,7 +229,7 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Neueste Artikel</h3>
+  <h3 class="title">Entradas Recientes</h3>
   <ul class="entry">
     
       <li>
@@ -123,19 +237,19 @@
       </li>
     
       <li>
+        <a href="/2015/08/20/请不要在新代码中使用原生态类型/">请不要在新代码中使用原生态类型</a>
+      </li>
+    
+      <li>
+        <a href="/2015/08/17/考虑实现Comparable/">考虑实现Comparable</a>
+      </li>
+    
+      <li>
+        <a href="/2015/08/12/始终要覆盖toString/">始终要覆盖toString</a>
+      </li>
+    
+      <li>
         <a href="/2015/08/09/消除非受检警告/">消除非受检警告</a>
-      </li>
-    
-      <li>
-        <a href="/2015/08/06/列表优先于数组/">列表优先于数组</a>
-      </li>
-    
-      <li>
-        <a href="/2015/08/02/优先考虑泛型/">优先考虑泛型</a>
-      </li>
-    
-      <li>
-        <a href="/2015/08/01/慎用可变参数/">慎用可变参数</a>
       </li>
     
   </ul>
@@ -144,12 +258,12 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Tags</h3>
+  <h3 class="title">Etiquetas</h3>
   <ul class="entry">
   
-    <li><a href="/tags/java优化/">java优化</a><small>1</small></li>
+    <li><a href="/tags/java优化/">java优化</a><small>3</small></li>
   
-    <li><a href="/tags/java注意事项/">java注意事项</a><small>3</small></li>
+    <li><a href="/tags/java注意事项/">java注意事项</a><small>4</small></li>
   
   </ul>
 </div>
@@ -157,7 +271,7 @@
 
   
 <div class="widget tagcloud">
-  <h3 class="title">Tag-Cloud</h3>
+  <h3 class="title">Nube de Etiquetas</h3>
   <div class="entry">
     <a href="/tags/java优化/" style="font-size: 10px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 20px;">java注意事项</a>
   </div>

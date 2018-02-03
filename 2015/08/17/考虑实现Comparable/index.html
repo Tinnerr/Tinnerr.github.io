@@ -3,20 +3,18 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>列表优先于数组 | 靳平的博客</title>
+  <title>考虑实现Comparable | 靳平的博客</title>
   <meta name="author" content="John Doe" />
 
   
-  <meta name="description" content="数组与泛型的区别一：数组是协变的，泛型是不可变的
-数组与泛型的区别二：数组是具体化的，数组只在运行时才知道并检查他的元素类型约束。泛型在编译前就检查它的元素类型，在编译时强化它们的类型信息，在运行时丢弃(或者擦除)它的元素类型信息，而且泛型是通过擦除来实现的。
-因此，数组和泛型不能很好地混合使用。数" />
+  <meta name="description" content="compareTo是comparable接口中唯一的方法。与equals方法不同的是，在跨越不同的类的时候，compareTo可以不做比较：如果两个被比较的对象引用不用类的对象，那么它可以抛出ClassCastException异常。依赖于比较关系的类包括有序集合类TreeSet和TreeMap,以" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="列表优先于数组" />
+  <meta property="og:title" content="考虑实现Comparable" />
   <meta property="og:site_name" content="靳平的博客" />
 
   
@@ -65,19 +63,17 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-08-06T08:44:26.000Z"><a href="/2015/08/06/列表优先于数组/">2015-08-06</a></time>
+        <time datetime="2015-08-17T01:51:13.000Z"><a href="/2015/08/17/考虑实现Comparable/">2015-08-17</a></time>
       
       
   
-    <h1 class="title">列表优先于数组</h1>
+    <h1 class="title">考虑实现Comparable</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>数组与泛型的区别一：数组是协变的，泛型是不可变的</p>
-<p>数组与泛型的区别二：<br>数组是具体化的，数组只在运行时才知道并检查他的元素类型约束。<br>泛型在编译前就检查它的元素类型，在编译时强化它们的类型信息，在运行时丢弃(或者擦除)它的元素类型信息，而且泛型是通过擦除来实现的。</p>
-<p>因此，数组和泛型不能很好地混合使用。<br>数组提供了运行时的类型安全，但是没有编译的类型安全，反之对于泛型也一样，如果发现将他们混合起来，应该用列表代替数组</p>
+        <p>compareTo是comparable接口中唯一的方法。<br>与equals方法不同的是，在跨越不同的类的时候，compareTo可以不做比较：如果两个被比较的对象引用不用类的对象，那么它可以抛出ClassCastException异常。<br>依赖于比较关系的类包括有序集合类TreeSet和TreeMap,以及工具类Collection和Arrays，他们内部都包含有搜索和排序算法。<br>告诫：无法在用新的值组建扩展可实例化的类时，同时保持compareTo约定，除非放弃面向对象的抽象优势。<br>另外就是compareTo方法中是不需要转换类型，因为它是进行排序的，而不是进行等同行的比较，所以不需要进行转换类型的，也不需要进行类型判断。<br>还有就是有多个关键域，那么就需要按照最关键的域开始进行比较，若相同，则依次向下比较，这样的结果才可能是希望看到的结果。</p>
 
       
     </div>
@@ -89,6 +85,11 @@
         </div>
         
         
+  
+  <div class="tags">
+    <a href="/tags/java优化/">java优化</a>
+  </div>
+
         <!-- partial('post/share') -->
       <div class="clearfix"></div>
     </footer>
