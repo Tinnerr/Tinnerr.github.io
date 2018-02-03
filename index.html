@@ -62,6 +62,257 @@
     <header>
       
         <div class="icon"></div>
+        <time datetime="2018-08-10T08:59:44.000Z"><a href="/2018/08/10/优先考虑泛型方法/">2018-08-10</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2018/08/10/优先考虑泛型方法/">优先考虑泛型方法</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>泛型方法的一个显著特征是：无需明确指定类型参数的值，不像调用泛型构造器的时候是必须指定的。<br>类型限制&lt;T extends Comparable<t>&gt;可以读作：“针对可以与自身进行比较的每个类型T ”<br>泛型方法还有一个比较重要的概念叫做类型推导。<br>在创建一个泛型集合实例时，这样写    Map<string ,="" integer="">   map  =  new  HashMap<string ,="" integer="">();<br>我们在调用泛型HashMap的构造器时，在new HashMap之后使用<string ,="" integer="">指明了类型参数。那么我们在使用泛型方法的时候是否也需要这样做呢？<br>写出这样的代码 ：Set.union<string>(s1,s2);   也就是说是否在需要调用方法的时候像调用构造器的那样在方法名后面指明类型参数。<br>泛型方法会根据具体传入的s1,s2的类型，来推断出类型参数E。如果传入的s1,s2是HashSet<string>，那么类型参数E就是String；<br>如果传入的s1,s2是HashSet<integer>，那么类型参数E就是Integer。<br>一句话就是：泛型方法的类型参数根据传入的实际参数的类型而定，不需要再调用时显示指明。</integer></string></string></string></string></string></t></p>
+<p>泛型方法就像泛型一样，使用起来比要求客户端转换输入参数并返回值的方法来的更加安全，也更加容易。就像类型一样，你应该确保新方法可以不用转换就能使用，这通常意味着要将他们进行返型化，并且就像类型一样，还应该将现有的方法泛型化，不会破坏现有的客户端。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java优化/">java优化</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-08-09T05:45:41.000Z"><a href="/2015/08/09/消除非受检警告/">2015-08-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/08/09/消除非受检警告/">消除非受检警告</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>当泛型编程时，会遇到很多编译器警告：非受检强制转化警告、非受检方法调用警告、非受检普通数组创建警告、非受检转换警告<br>要尽可能消除每一个非受检警告。<br>如果无法消除警告，同时可以证明引起警告的代码是类型安全的，可以用一个@SuppressWarnings(“unchecked”)注解来禁止这条警告，可以用任何粒度的级别中，但是应该始终在尽可能小的范围中使用SuppressWarnings注解，永远不要在整个类中使用SuppressWarnings，可能会掩盖了重要的警告。<br>其次，将SuppressWarnings放在return语句中是非法的，应该声明一个局部变量来保存返回值，并注解其声明。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java注意事项/">java注意事项</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-08-06T08:44:26.000Z"><a href="/2015/08/06/列表优先于数组/">2015-08-06</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/08/06/列表优先于数组/">列表优先于数组</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>数组与泛型的区别一：数组是协变的，泛型是不可变的</p>
+<p>数组与泛型的区别二：<br>数组是具体化的，数组只在运行时才知道并检查他的元素类型约束。<br>泛型在编译前就检查它的元素类型，在编译时强化它们的类型信息，在运行时丢弃(或者擦除)它的元素类型信息，而且泛型是通过擦除来实现的。</p>
+<p>因此，数组和泛型不能很好地混合使用。<br>数组提供了运行时的类型安全，但是没有编译的类型安全，反之对于泛型也一样，如果发现将他们混合起来，应该用列表代替数组</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-08-02T10:23:34.000Z"><a href="/2015/08/02/优先考虑泛型/">2015-08-02</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/08/02/优先考虑泛型/">优先考虑泛型</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>如果一不小心创建了泛型数组，在java中这是不允许的，但是有两种解决办法：一：直接绕过创建泛型数组的禁令：创建一个Object的数组，并将它转成泛型数组类型<br>Object object = (E[]) new Object[ARRAY_SIZE];<br>二：将elements域的类型从E[]改为Object[]。<br>使用泛型比使用需要在客户端代码中进行转换的类型来得更安全，也更容易，只要时间允许，就把现有的类型都返型化</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-08-01T04:42:12.000Z"><a href="/2015/08/01/慎用可变参数/">2015-08-01</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/08/01/慎用可变参数/">慎用可变参数</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>在java1.5发行版本中增加了可变参数的方法,可以接受0个或者多个指定类型的参数.不过,最好在使用可变参数前增加一个只有一个参数的方法,来提高性能或者代码可读性.可变参数是为printf而设计的,为了核心地反射机制.利用可变参数可以使printf和反射机制都极大地收益.<br>不必改造具有final数组参数的每个方法,只当确定是在数量不定的值上执行调用时才使用可变参数.<br>在重视性能的情况下,使用可变参数机制要特别小心,可变参数的每次调用都会导致进行一次数组分配和初始化.<br>因此,应该谨慎考虑使用可变参数,提高开发效率.</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java注意事项/">java注意事项</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-31T08:40:58.000Z"><a href="/2015/07/31/慎用重载/">2015-07-31</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/07/31/慎用重载/">慎用重载</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>重载：在同一个类的内部，方法名字相同，参数列表不同的方法，称之为方法的重载。 与返回类型无关。<br>参数列表不同：个数不同、类型不同、顺序不同<br>要调用哪个重载方法是在编译时做出决定的,对于重载方法的选择是静态的,而对于被覆盖的方法的选择是动态的,选择被覆盖的方法的正确版本是在运行时进行的,选择的依据是被调用方法所在的对象的运行时类型,<br>子类重写父类的方法覆盖):当一个子类包含的方法的声明与祖先类中的方法声明具有同样的签名时,父类的方法就被覆盖了,如果方法是在该子类的实例上被调用的,那么子类的覆盖方法将被执行.<br>但是,应该避免胡乱地使用重载机制:安全而保守的策略是:永远不要导出两个具有想同参数数目的重载方法,也就是说始终给方法起不同的名称,而不使用重载机制.一般情况下,对于多个具有相同参数数目的方法来说,应该尽量避免重载方法,如果正在改造一个现有的类以实现新的接口,就应该保证当传递同样的参数时,所有重载方法的行为必须一致.</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java注意事项/">java注意事项</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-07-22T10:27:27.000Z"><a href="/2015/07/22/覆盖equals时请遵守通用约定/">2015-07-22</a></time>
       
       
@@ -208,47 +459,13 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-07-10T09:55:29.000Z"><a href="/2015/07/10/关于java/">2015-07-10</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/07/10/关于java/">关于java</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程 。<br>Java具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点[2]  。Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Nächste Seite &raquo;</a>
+  </nav>
+
 </nav>
 </div></div>
     <aside id="sidebar" class="alignright">
@@ -267,23 +484,23 @@
   <ul class="entry">
     
       <li>
-        <a href="/2015/07/22/覆盖equals时请遵守通用约定/">覆盖equals时请遵守通用约定</a>
+        <a href="/2018/08/10/优先考虑泛型方法/">优先考虑泛型方法</a>
       </li>
     
       <li>
-        <a href="/2015/07/21/消除过期对象的引用/">消除过期对象的引用</a>
+        <a href="/2015/08/09/消除非受检警告/">消除非受检警告</a>
       </li>
     
       <li>
-        <a href="/2015/07/20/接口优于抽象类/">接口优于抽象类</a>
+        <a href="/2015/08/06/列表优先于数组/">列表优先于数组</a>
       </li>
     
       <li>
-        <a href="/2015/07/18/for-each循环优于传统的for循环/">for-eachu循环优于传统的for循环</a>
+        <a href="/2015/08/02/优先考虑泛型/">优先考虑泛型</a>
       </li>
     
       <li>
-        <a href="/2015/07/10/关于java/">关于java</a>
+        <a href="/2015/08/01/慎用可变参数/">慎用可变参数</a>
       </li>
     
   </ul>
@@ -291,8 +508,26 @@
 
 
   
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/java优化/">java优化</a><small>1</small></li>
+  
+    <li><a href="/tags/java注意事项/">java注意事项</a><small>3</small></li>
+  
+  </ul>
+</div>
+
 
   
+<div class="widget tagcloud">
+  <h3 class="title">Tag-Cloud</h3>
+  <div class="entry">
+    <a href="/tags/java优化/" style="font-size: 10px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 20px;">java注意事项</a>
+  </div>
+</div>
+
 </aside>
     <div class="clearfix"></div>
   </div>

@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>for-eachu循环优于传统的for循环 | 靳平的博客</title>
+  <title>慎用可变参数 | 靳平的博客</title>
   <meta name="author" content="John Doe" />
 
   
-  <meta name="description" content="在jdk1.5之前对集合只能通过for循环或者迭代器的形式去遍历，而且极有可能会出错，尤其是嵌套多层循环，往往会产生混乱。jdk1.5推出for-each循环，通过完全隐藏迭代器或者索引变量，避免了混乱和出错的可能。for-each循环不仅能遍历集合和数组，还能遍历任何实现Iterable接口的对象" />
+  <meta name="description" content="在java1.5发行版本中增加了可变参数的方法,可以接受0个或者多个指定类型的参数.不过,最好在使用可变参数前增加一个只有一个参数的方法,来提高性能或者代码可读性.可变参数是为printf而设计的,为了核心地反射机制.利用可变参数可以使printf和反射机制都极大地收益.不必改造具有final数组参" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="for-eachu循环优于传统的for循环" />
+  <meta property="og:title" content="慎用可变参数" />
   <meta property="og:site_name" content="靳平的博客" />
 
   
@@ -63,17 +63,17 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-07-18T08:25:02.000Z"><a href="/2015/07/18/for-each循环优于传统的for循环/">2015-07-18</a></time>
+        <time datetime="2015-08-01T04:42:12.000Z"><a href="/2015/08/01/慎用可变参数/">2015-08-01</a></time>
       
       
   
-    <h1 class="title">for-eachu循环优于传统的for循环</h1>
+    <h1 class="title">慎用可变参数</h1>
   
 
     </header>
     <div class="entry">
       
-        <p>在jdk1.5之前对集合只能通过for循环或者迭代器的形式去遍历，而且极有可能会出错，尤其是嵌套多层循环，往往会产生混乱。<br>jdk1.5推出for-each循环，通过完全隐藏迭代器或者索引变量，避免了混乱和出错的可能。for-each循环不仅能遍历集合和数组，还能遍历任何实现Iterable接口的对象。<br>for-each循环在简洁性和预防bug方面有着传统的for循环无法比拟的优势，并且没有性能损失。<br>但是有三种情况无法使用for-each：<br>1.过滤。2.转换 这两种情况使用元素中的方法，此时必须使用显性的迭代器或索引<br>3平行迭代。如果需要并行地遍历多个集合，就需要显示的控制迭代器或者索引，以便所有迭代器或者索引变量都可以同步前移。<br>以上三种情况，必须使用普通的for循环。</p>
+        <p>在java1.5发行版本中增加了可变参数的方法,可以接受0个或者多个指定类型的参数.不过,最好在使用可变参数前增加一个只有一个参数的方法,来提高性能或者代码可读性.可变参数是为printf而设计的,为了核心地反射机制.利用可变参数可以使printf和反射机制都极大地收益.<br>不必改造具有final数组参数的每个方法,只当确定是在数量不定的值上执行调用时才使用可变参数.<br>在重视性能的情况下,使用可变参数机制要特别小心,可变参数的每次调用都会导致进行一次数组分配和初始化.<br>因此,应该谨慎考虑使用可变参数,提高开发效率.</p>
 
       
     </div>
@@ -85,6 +85,11 @@
         </div>
         
         
+  
+  <div class="tags">
+    <a href="/tags/java注意事项/">java注意事项</a>
+  </div>
+
         <!-- partial('post/share') -->
       <div class="clearfix"></div>
     </footer>
