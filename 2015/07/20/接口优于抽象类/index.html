@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>Archiv | Hexo</title>
+  <title>接口优于抽象类 | Hexo</title>
   <meta name="author" content="John Doe" />
 
+  
+  <meta name="description" content="首先比较接口和抽象类：相同点：两者都可以用来定义允许多个实现的类型。 不同点：抽象类允许包含某些方法的实现，但是接口则不允许。      而java作为只允许单继承的语言，抽象类作为类型定义受到了极大的限制，如果右抽象类定义类型，那么实现其功能的类必须成为它的子类。其次，接口相对于抽象类有三方面优势" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  
+  <meta property="og:title" content="接口优于抽象类" />
   <meta property="og:site_name" content="Hexo" />
 
   
@@ -55,73 +57,42 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">Archiv</h2>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-20T08:29:31.000Z"><a href="/2015/07/20/接口优于抽象类/">2015-07-20</a></time>
+      
+      
+  
+    <h1 class="title">接口优于抽象类</h1>
+  
 
+    </header>
+    <div class="entry">
+      
+        <p>首先比较接口和抽象类：相同点：两者都可以用来定义允许多个实现的类型。<br> 不同点：抽象类允许包含某些方法的实现，但是接口则不允许。<br>      而java作为只允许单继承的语言，抽象类作为类型定义受到了极大的限制，如果右抽象类定义类型，那么实现其功能的类必须成为它的子类。<br>其次，接口相对于抽象类有三方面优势：<br>1.现有的类可以很容易被更新，以实现新的接口；<br>2.接口是定义mixin（混合类型）的理想选择；<br>3.接口允许我们构造非层次结构的类型框架<br>       使用接口不允许包含方法的实现，但是可以通过对导出的每个重要的接口都提供一个抽象的骨架实现类，把接口和抽象类的优点结合起来，使用骨架实现既可以为抽象类提供实现上的帮助，也不强加“抽象类型被用作类型定义时”所特有的严格限制。<br>       如何编写骨架实现类：.必须先研究接口，确定哪些方法是最基本的，这些基本方法成为骨架实现类的抽象方法，然后必须为接口中所有其他方法提供具体的实现。<br>       抽象类相对于接口也有其一定的优势：抽象类的演变比接口的演变要容易的多。接口一旦被公开发行并且已被广泛使用，再想改变这个接口几乎是不可能的。在发行接口的时候，最好是在接口被“冻结”之前尽可能让更多的程序员用尽可能多的方式去实现这个新接口。<br>       接口通常是定义允许多个实现的类型的最佳途径，当演变的容易性比功能更为重要的时候，应当使用抽象类来定义类型</p>
 
-  <div class="archive">
+      
+    </div>
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-07-22T10:27:27.000Z"><a href="/2015/07/22/覆盖equals时请遵守通用约定/">2015-07-22</a></time>
-            
-              <h1 class="title"><a href="/2015/07/22/覆盖equals时请遵守通用约定/">覆盖equals时请遵守通用约定</a></h1>
-            
-          </header>
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
         </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-07-21T08:51:58.000Z"><a href="/2015/07/21/消除过期对象的引用/">2015-07-21</a></time>
-            
-              <h1 class="title"><a href="/2015/07/21/消除过期对象的引用/">消除过期对象的引用</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-07-20T08:29:31.000Z"><a href="/2015/07/20/接口优于抽象类/">2015-07-20</a></time>
-            
-              <h1 class="title"><a href="/2015/07/20/接口优于抽象类/">接口优于抽象类</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-07-18T08:25:02.000Z"><a href="/2015/07/18/for-each循环优于传统的for循环/">2015-07-18</a></time>
-            
-              <h1 class="title"><a href="/2015/07/18/for-each循环优于传统的for循环/">for-eachu循环优于传统的for循环</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-07-10T09:55:29.000Z"><a href="/2015/07/10/关于java/">2015-07-10</a></time>
-            
-              <h1 class="title"><a href="/2015/07/10/关于java/">关于java</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
   </div>
+</article>
+
+
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">

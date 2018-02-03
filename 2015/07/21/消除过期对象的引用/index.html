@@ -3,16 +3,18 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>Archiv | Hexo</title>
+  <title>消除过期对象的引用 | Hexo</title>
   <meta name="author" content="John Doe" />
 
+  
+  <meta name="description" content="本节先引入一个栈实现的例子，如果一个栈先增长，再收缩，那么从栈中弹出来的对象将不会被当作垃圾回收。这是因为栈内部维护着对这些对象的过期引用。清空过期引用的方法：将这些过期引用清空即可（即element = null）。从而不会浪费内存，如果以后他们又被错误地引用，则会抛出空指针异常。能使我们很好的发" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  
+  <meta property="og:title" content="消除过期对象的引用" />
   <meta property="og:site_name" content="Hexo" />
 
   
@@ -55,73 +57,42 @@
 </nav>
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper">
-<h2 class="archive-title">Archiv</h2>
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-21T08:51:58.000Z"><a href="/2015/07/21/消除过期对象的引用/">2015-07-21</a></time>
+      
+      
+  
+    <h1 class="title">消除过期对象的引用</h1>
+  
 
+    </header>
+    <div class="entry">
+      
+        <p>本节先引入一个栈实现的例子，如果一个栈先增长，再收缩，那么从栈中弹出来的对象将不会被当作垃圾回收。这是因为栈内部维护着对这些对象的过期引用。<br>清空过期引用的方法：将这些过期引用清空即可（即element = null）。从而不会浪费内存，如果以后他们又被错误地引用，则会抛出空指针异常。能使我们很好的发现程序运行中出现的问题。<br>但是清空对象引用不能常用，它应该只是一种例外，而不是一种规范行为。消除过期引用最好的方法是让包含该引用的变量结束其生命周期。<br>内存泄漏的三个常见来源：<br>     1.警惕那些自己管理内存的类；<br>     2.缓存                                  ；<br>     3.监听器和其他回调。</p>
 
-  <div class="archive">
+      
+    </div>
     
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-07-22T10:27:27.000Z"><a href="/2015/07/22/覆盖equals时请遵守通用约定/">2015-07-22</a></time>
-            
-              <h1 class="title"><a href="/2015/07/22/覆盖equals时请遵守通用约定/">覆盖equals时请遵守通用约定</a></h1>
-            
-          </header>
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
         </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-07-21T08:51:58.000Z"><a href="/2015/07/21/消除过期对象的引用/">2015-07-21</a></time>
-            
-              <h1 class="title"><a href="/2015/07/21/消除过期对象的引用/">消除过期对象的引用</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-07-20T08:29:31.000Z"><a href="/2015/07/20/接口优于抽象类/">2015-07-20</a></time>
-            
-              <h1 class="title"><a href="/2015/07/20/接口优于抽象类/">接口优于抽象类</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-07-18T08:25:02.000Z"><a href="/2015/07/18/for-each循环优于传统的for循环/">2015-07-18</a></time>
-            
-              <h1 class="title"><a href="/2015/07/18/for-each循环优于传统的for循环/">for-eachu循环优于传统的for循环</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
-      <article class="post">
-        <div class="post-content">
-          <header>
-            <div class="icon"></div>
-            <time datetime="2015-07-10T09:55:29.000Z"><a href="/2015/07/10/关于java/">2015-07-10</a></time>
-            
-              <h1 class="title"><a href="/2015/07/10/关于java/">关于java</a></h1>
-            
-          </header>
-        </div>
-      </article>
-    
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
   </div>
+</article>
+
+
+
 </div></div>
     <aside id="sidebar" class="alignright">
   <div class="search">

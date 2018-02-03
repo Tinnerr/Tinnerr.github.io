@@ -62,17 +62,17 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-02-03T05:55:29.000Z"><a href="/2018/02/03/关于java/">2018-02-03</a></time>
+        <time datetime="2015-07-22T10:27:27.000Z"><a href="/2015/07/22/覆盖equals时请遵守通用约定/">2015-07-22</a></time>
       
       
   
-    <h1 class="title"><a href="/2018/02/03/关于java/">关于java</a></h1>
+    <h1 class="title"><a href="/2015/07/22/覆盖equals时请遵守通用约定/">覆盖equals时请遵守通用约定</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程 。<br>Java具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点[2]  。Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等</p>
+        <p>Object类虽然是一个具体类，但是设计它主要是为了扩展，它的所有非final方法（equals、hashCode、toString、finalize）都是被设计成是要被覆盖的。<br>不必覆盖equals方法的情况：<br>    1.类的每个实例本质上都是唯一的；<br>    2.不关心类是否提供了“逻辑相等”的测试功能；<br>    3.超类已经覆盖了equals，从超类继承过来的行为对于子类也是合适的；<br>    4.类是私有的或是包级私有的，可以确定它的equals方法永远不会被调用。<br>什么时候需要覆盖？<br>     如果类具有自己独特的“逻辑相等”概念（不同于对象等同的概念），而且超类还没有覆盖equals以实现期望的行为，此时需覆盖equals方法。<br>在覆盖equals方法时，必须遵守的约定：<br>1.自反性：对于任何非null的引用值x，x.equals(x)必须返回true;<br>2.对称性：对于任何非null的引用值x和y,当且仅当y.equals(x)返回true时，x.equals(y)必须返回true;<br>3.传递性：对于任何非null的引用值x,y和z,如果x.equals(y)和y.equals(z)都返回true，那么x.equals(z)也必须返回true;<br>4.一致性：对于任何非null的引用值x和y,只要equals的比较操作在对象中所用的信息没有被修改，多次调用x.equals(y)就会一致地返回true，或者一致地返回false。<br>综合以上所有的要求，实现高质量equals方法的的诀窍：<br>1.使用==操作符检查“参数是否为这个对象的引用”。这只是一种性能优化，如果操作有可能昂贵，就值得这么做；<br>2.使用instanceof操作符检查“参数是否为正确的类型”；<br>3.把参数转换成正确的类型；<br>4.对于该类中的每个“关键”域，检查参数中的域是否与该对象中对应的域相匹配；<br>5.当编写完equals方法之后，应该检查它是否是对称的、传递的、一致的。</p>
 
       
     </div>
@@ -100,17 +100,131 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-02-03T04:50:54.652Z"><a href="/2018/02/03/hello-world/">2018-02-03</a></time>
+        <time datetime="2015-07-21T08:51:58.000Z"><a href="/2015/07/21/消除过期对象的引用/">2015-07-21</a></time>
       
       
   
-    <h1 class="title"><a href="/2018/02/03/hello-world/">Hello World</a></h1>
+    <h1 class="title"><a href="/2015/07/21/消除过期对象的引用/">消除过期对象的引用</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>第一次学习hexo，请多多指教</p>
+        <p>本节先引入一个栈实现的例子，如果一个栈先增长，再收缩，那么从栈中弹出来的对象将不会被当作垃圾回收。这是因为栈内部维护着对这些对象的过期引用。<br>清空过期引用的方法：将这些过期引用清空即可（即element = null）。从而不会浪费内存，如果以后他们又被错误地引用，则会抛出空指针异常。能使我们很好的发现程序运行中出现的问题。<br>但是清空对象引用不能常用，它应该只是一种例外，而不是一种规范行为。消除过期引用最好的方法是让包含该引用的变量结束其生命周期。<br>内存泄漏的三个常见来源：<br>     1.警惕那些自己管理内存的类；<br>     2.缓存                                  ；<br>     3.监听器和其他回调。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-20T08:29:31.000Z"><a href="/2015/07/20/接口优于抽象类/">2015-07-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/07/20/接口优于抽象类/">接口优于抽象类</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>首先比较接口和抽象类：相同点：两者都可以用来定义允许多个实现的类型。<br> 不同点：抽象类允许包含某些方法的实现，但是接口则不允许。<br>      而java作为只允许单继承的语言，抽象类作为类型定义受到了极大的限制，如果右抽象类定义类型，那么实现其功能的类必须成为它的子类。<br>其次，接口相对于抽象类有三方面优势：<br>1.现有的类可以很容易被更新，以实现新的接口；<br>2.接口是定义mixin（混合类型）的理想选择；<br>3.接口允许我们构造非层次结构的类型框架<br>       使用接口不允许包含方法的实现，但是可以通过对导出的每个重要的接口都提供一个抽象的骨架实现类，把接口和抽象类的优点结合起来，使用骨架实现既可以为抽象类提供实现上的帮助，也不强加“抽象类型被用作类型定义时”所特有的严格限制。<br>       如何编写骨架实现类：.必须先研究接口，确定哪些方法是最基本的，这些基本方法成为骨架实现类的抽象方法，然后必须为接口中所有其他方法提供具体的实现。<br>       抽象类相对于接口也有其一定的优势：抽象类的演变比接口的演变要容易的多。接口一旦被公开发行并且已被广泛使用，再想改变这个接口几乎是不可能的。在发行接口的时候，最好是在接口被“冻结”之前尽可能让更多的程序员用尽可能多的方式去实现这个新接口。<br>       接口通常是定义允许多个实现的类型的最佳途径，当演变的容易性比功能更为重要的时候，应当使用抽象类来定义类型</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-18T08:25:02.000Z"><a href="/2015/07/18/for-each循环优于传统的for循环/">2015-07-18</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/07/18/for-each循环优于传统的for循环/">for-eachu循环优于传统的for循环</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>在jdk1.5之前对集合只能通过for循环或者迭代器的形式去遍历，而且极有可能会出错，尤其是嵌套多层循环，往往会产生混乱。<br>jdk1.5推出for-each循环，通过完全隐藏迭代器或者索引变量，避免了混乱和出错的可能。for-each循环不仅能遍历集合和数组，还能遍历任何实现Iterable接口的对象。<br>for-each循环在简洁性和预防bug方面有着传统的for循环无法比拟的优势，并且没有性能损失。<br>但是有三种情况无法使用for-each：<br>1.过滤。2.转换 这两种情况使用元素中的方法，此时必须使用显性的迭代器或索引<br>3平行迭代。如果需要并行地遍历多个集合，就需要显示的控制迭代器或者索引，以便所有迭代器或者索引变量都可以同步前移。<br>以上三种情况，必须使用普通的for循环。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-07-10T09:55:29.000Z"><a href="/2015/07/10/关于java/">2015-07-10</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/07/10/关于java/">关于java</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Java是一门面向对象编程语言，不仅吸收了C++语言的各种优点，还摒弃了C++里难以理解的多继承、指针等概念，因此Java语言具有功能强大和简单易用两个特征。Java语言作为静态面向对象编程语言的代表，极好地实现了面向对象理论，允许程序员以优雅的思维方式进行复杂的编程 。<br>Java具有简单性、面向对象、分布式、健壮性、安全性、平台独立与可移植性、多线程、动态性等特点[2]  。Java可以编写桌面应用程序、Web应用程序、分布式系统和嵌入式系统应用程序等</p>
 
       
     </div>
@@ -140,7 +254,7 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="search" name="q" results="0" placeholder="Suche">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
@@ -149,15 +263,27 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
+  <h3 class="title">Neueste Artikel</h3>
   <ul class="entry">
     
       <li>
-        <a href="/2018/02/03/关于java/">关于java</a>
+        <a href="/2015/07/22/覆盖equals时请遵守通用约定/">覆盖equals时请遵守通用约定</a>
       </li>
     
       <li>
-        <a href="/2018/02/03/hello-world/">Hello World</a>
+        <a href="/2015/07/21/消除过期对象的引用/">消除过期对象的引用</a>
+      </li>
+    
+      <li>
+        <a href="/2015/07/20/接口优于抽象类/">接口优于抽象类</a>
+      </li>
+    
+      <li>
+        <a href="/2015/07/18/for-each循环优于传统的for循环/">for-eachu循环优于传统的for循环</a>
+      </li>
+    
+      <li>
+        <a href="/2015/07/10/关于java/">关于java</a>
       </li>
     
   </ul>
