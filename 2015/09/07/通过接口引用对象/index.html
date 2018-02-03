@@ -1,0 +1,206 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>通过接口引用对象 | 靳平的博客</title>
+  <meta name="author" content="jinping Tinner" />
+
+  
+  <meta name="description" content="应该使用接口而不是用类作为参数的类型,更一般地讲:应该优先使用接口而不是类来引用对象,如果有合适的接口类型存在,那么对于参数,返回值,变量和域来说,就都应该使用接口类型进行声明…..只有当利用构造器创建某个对象的时候,才真正需要引用这个对象的类.
+好处:它能使程序变得更加灵活,当决定要更换实现时,只" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="通过接口引用对象" />
+  <meta property="og:site_name" content="靳平的博客" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="靳平的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">靳平的博客</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">我的主页</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-09-07T11:31:55.000Z"><a href="/2015/09/07/通过接口引用对象/">2015-09-07</a></time>
+      
+      
+  
+    <h1 class="title">通过接口引用对象</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>应该使用接口而不是用类作为参数的类型,更一般地讲:应该优先使用接口而不是类来引用对象,如果有合适的接口类型存在,那么对于参数,返回值,变量和域来说,就都应该使用接口类型进行声明…..只有当利用构造器创建某个对象的时候,才真正需要引用这个对象的类.</p>
+<p>好处:它能使程序变得更加灵活,当决定要更换实现时,只改变其中的构造器中类的名称即可,周围的所有代码都可以正常工作….</p>
+<p>改变实现的好处:因为新的实现可以提供更好的性能,或者因为它提供了期望得到的额外类型.</p>
+</blockquote>
+<p>注意：<code>新的实现必须要提供相同的功能才能去替换</code></p>
+<h2 id="不适合用接口引用对象的情形"><a href="#不适合用接口引用对象的情形" class="headerlink" title="不适合用接口引用对象的情形"></a>不适合用接口引用对象的情形</h2><pre><code>1. 如果没有合适的接口存在,完全可以用类而不是用接口来引用对象
+2. 对象属于一个框架,而框架的基本类型是类而不是接口
+2. 类实现了接口,但是它提供了接口中不存在的额外方法
+</code></pre>
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java优化/">java优化</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/16/基本类型优于装箱基本类型/">基本类型优于装箱基本类型</a>
+      </li>
+    
+      <li>
+        <a href="/2018/02/03/String常用方法总结/">String常用方法总结</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/工厂方法模式/">工厂方法模式</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/工厂模式/">工厂方法模式</a>
+      </li>
+    
+      <li>
+        <a href="/2015/09/12/当心字符串连接的性能/">当心字符串连接的性能</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/String/">String</a><small>1</small></li>
+  
+    <li><a href="/tags/java优化/">java优化</a><small>6</small></li>
+  
+    <li><a href="/tags/java注意事项/">java注意事项</a><small>4</small></li>
+  
+    <li><a href="/tags/java编程/">java编程</a><small>3</small></li>
+  
+    <li><a href="/tags/设计模式/">设计模式</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 17.5px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 15px;">java编程</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2018 jinping Tinner
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

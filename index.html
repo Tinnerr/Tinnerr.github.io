@@ -62,18 +62,28 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2018-08-10T08:59:44.000Z"><a href="/2018/08/10/优先考虑泛型方法/">2018-08-10</a></time>
+        <time datetime="2018-09-16T02:38:31.000Z"><a href="/2018/09/16/基本类型优于装箱基本类型/">2018-09-16</a></time>
       
       
   
-    <h1 class="title"><a href="/2018/08/10/优先考虑泛型方法/">优先考虑泛型方法</a></h1>
+    <h1 class="title"><a href="/2018/09/16/基本类型优于装箱基本类型/">基本类型优于装箱基本类型</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>泛型方法的一个显著特征是：无需明确指定类型参数的值，不像调用泛型构造器的时候是必须指定的。<br>类型限制&lt;T extends Comparable<t>&gt;可以读作：“针对可以与自身进行比较的每个类型T ”<br>泛型方法还有一个比较重要的概念叫做类型推导。<br>在创建一个泛型集合实例时，这样写    Map<string ,="" integer="">   map  =  new  HashMap<string ,="" integer="">();<br>我们在调用泛型HashMap的构造器时，在new HashMap之后使用<string ,="" integer="">指明了类型参数。那么我们在使用泛型方法的时候是否也需要这样做呢？<br>写出这样的代码 ：Set.union<string>(s1,s2);   也就是说是否在需要调用方法的时候像调用构造器的那样在方法名后面指明类型参数。<br>泛型方法会根据具体传入的s1,s2的类型，来推断出类型参数E。如果传入的s1,s2是HashSet<string>，那么类型参数E就是String；<br>如果传入的s1,s2是HashSet<integer>，那么类型参数E就是Integer。<br>一句话就是：泛型方法的类型参数根据传入的实际参数的类型而定，不需要再调用时显示指明。</integer></string></string></string></string></string></t></p>
-<p>泛型方法就像泛型一样，使用起来比要求客户端转换输入参数并返回值的方法来的更加安全，也更加容易。就像类型一样，你应该确保新方法可以不用转换就能使用，这通常意味着要将他们进行返型化，并且就像类型一样，还应该将现有的方法泛型化，不会破坏现有的客户端。</p>
+        <h2 id="什么是装箱类型？"><a href="#什么是装箱类型？" class="headerlink" title="什么是装箱类型？"></a>什么是装箱类型？</h2><p>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java中包含8种基本数据类型和3中引用数据类型,其中每个基本数据类型都有一个对应的引用类型,称作装箱基本类型,装箱基本数据类型中对应于int,double和boolean的是Integer,Double和Boolean</p>
+<blockquote>
+<p>java 1.5之后增加了自动装箱和自动拆箱.</p>
+<p>在基本数据类型和装箱基本类型之间有三个主要区别:</p>
+<pre><code>1. 基本类型只有值,而装箱基本类型具有与他们的值不同的同一性;
+2. 基本类型只有功能完备的值,而每个装箱基本类型除了它对应基本类型的所有功能值之外,还有个非功能值:null;
+3. 基本类型通常比装箱基本类型更节省时间和空间.
+</code></pre><p>用到装箱基本类型的情况:</p>
+<pre><code>1. 作为集合中的元素,键和值,必须将装箱基本类型放在集合中;
+2. 在参数化类型中,必须使用装箱基本类型作为类型参数,因为java不允许使用基本类型;
+3. 进行反射的方法调用中,必须使用装箱基本类型.
+</code></pre></blockquote>
 
       
     </div>
@@ -106,35 +116,300 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-08-20T08:50:36.000Z"><a href="/2015/08/20/请不要在新代码中使用原生态类型/">2015-08-20</a></time>
+        <time datetime="2018-02-03T11:48:11.000Z"><a href="/2018/02/03/String常用方法总结/">2018-02-03</a></time>
       
       
   
-    <h1 class="title"><a href="/2015/08/20/请不要在新代码中使用原生态类型/">请不要在新代码中使用原生态类型</a></h1>
+    <h1 class="title"><a href="/2018/02/03/String常用方法总结/">String常用方法总结</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p> 泛型的概念：生命中具有一个或者多个类型参数的类或者接口，泛型类和接口统称为泛型。<br>     每种泛型定义一种参数化的类型，构成格式为：List<string>（字符串列表），表示元素类型为String的列表<br>     每个泛型都定义了一个原生态类型，即不带任何实际类型参数的泛型名称。如：List</string></p>
-<pre><code>private final Collection&lt;Stamp&gt; stamps = ...
-通过这条声明，编译器知道stamps应该只包含Stamp实例，并给予保证，并且从集合中删除元素不需要进行手工转换。
-如果使用原生态类型，就失掉了泛型在安全性和表述性方面的优势，但是还是允许使用原生态类型的。并且能够与使用泛型的新代码互用，才能将参数化类型的实例传递给那些被设计成普通类型的方法，这种需求被称作移植兼容性，促成了支持原生态类型的决定。
+        <h2 id="一、String类"><a href="#一、String类" class="headerlink" title="一、String类"></a>一、String类</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String类在java.lang包中，java使用String类创建一个字符串变量，字符串变量属于对象。java把String类声明为final类。String类对象创建之后不能修改，由0或多个字符组成，包含在一对双引号之间。<br><br><br></p>
+<h2 id="二、String类对象的创建"><a href="#二、String类对象的创建" class="headerlink" title="二、String类对象的创建"></a>二、String类对象的创建</h2><p> 字符串声明：String stringName;<br> 字符串创建：stringName = new String(字符串常量);或stringName = 字符串常量;<br><br><br></p>
+<h2 id="三、String类常用方法"><a href="#三、String类常用方法" class="headerlink" title="三、String类常用方法"></a>三、String类常用方法</h2><p> 1.求字符串长度：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int length()   <span class="comment">//返回该字符串的长度</span></span><br></pre></td></tr></table></figure></p>
+<p> 2.求字符串某一位置字符:<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public char charAt(int index) <span class="comment">//返回字符串中指定位置的字符</span></span><br></pre></td></tr></table></figure></p>
+<p> 3.提取子串<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public <span class="built_in">String</span> subString(int beginIndex) <span class="comment">//该方法从beginIndex位置起，从当前字符串中取出剩余的字符作为一个新的字符串返回</span></span><br><span class="line">public <span class="built_in">String</span> subString(int n1,int n2) <span class="comment">//该方法从n1位置起，从当前字符中取出到n2-1位置的字符作为一个新的字符串返回</span></span><br></pre></td></tr></table></figure></p>
+<p> 4.字符串比较<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public int compareTo(<span class="built_in">String</span> anotherStr)<span class="comment">//该方法对字符串内容按字典顺序进行大小比较，通过返回的整数值指明当前字符串与参数字符串的大小关系，若当前对象比参数大则返回正整数，反之返回负整数，相等返回0</span></span><br><span class="line">public int CompareToIgnore(<span class="built_in">String</span> anotherStr)<span class="comment">//与compareTo类似，但是忽略大小写</span></span><br><span class="line">public boolean equals(<span class="built_in">Object</span> anotherObj) <span class="comment">//两个字符串相等的时候返回true</span></span><br><span class="line">puiblic boolean equalsIgnoreCase(<span class="built_in">String</span> anoStr)<span class="comment">//忽略大小写</span></span><br></pre></td></tr></table></figure></p>
+<p> 5.字符串连接<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public <span class="built_in">String</span> concat(<span class="built_in">String</span> str)<span class="comment">//将参数中的字符串str连接到当前字符串的后面，类似于"+"</span></span><br></pre></td></tr></table></figure></p>
+<p> 6.字符串中单个字符查找<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public int indexOf(int ch/<span class="built_in">String</span> str)<span class="comment">//返回当前字符或子串在当前字符串中首次出现的位置，没有出现返回-1</span></span><br><span class="line">public int indexOf(int ch/<span class="built_in">String</span> str,int fromIndex)<span class="comment">//与之前类似，区别在于从fromIndex处开始查找</span></span><br><span class="line">public int lastIndexOf(int ch/<span class="built_in">String</span> str)<span class="comment">//该方法与第一种类似，区别在于该方法从字符串的末尾位置向前查找。</span></span><br><span class="line">public int lastIndexOf(int ch/<span class="built_in">String</span> str, int fromIndex)<span class="comment">//该方法与第二种方法类似，区别于该方法从fromIndex位置向前查找。</span></span><br></pre></td></tr></table></figure></p>
+<p> 7.字符串中字符的大小写转换<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public <span class="built_in">String</span> toLowerCase()<span class="comment">//返回当前字符串中所有字符转换成小写后的新串</span></span><br><span class="line">public <span class="built_in">String</span> toUpperCase()<span class="comment">//返回当前字符串中所有字符转换成大写后的新串</span></span><br></pre></td></tr></table></figure></p>
+<p> 8.字符串的替换<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public <span class="built_in">String</span> replace(char oldChar,char newChar)<span class="comment">//返回一个新的替换好的字符串</span></span><br><span class="line">public <span class="built_in">String</span> replaceFirst(<span class="built_in">String</span> regex,<span class="built_in">String</span> replacrment)<span class="comment">//该方法用字符replacement的内容替换当前字符串中遇到的第一个和字符串regex相匹配的子串，应将新的字符串返回。</span></span><br><span class="line">public <span class="built_in">String</span> replaceAll(<span class="built_in">String</span> regex, <span class="built_in">String</span> replacement)<span class="comment">//该方法用字符replacement的内容替换当前字符串中遇到的所有和字符串regex相匹配的子串，应将新的字符串返回。</span></span><br></pre></td></tr></table></figure></p>
+<p> 9.常用的方法：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span> trim()<span class="comment">//截去字符串两端的空格，但是对于中间的空格不处理</span></span><br><span class="line">boolean statWith(<span class="built_in">String</span> prefix)或boolean endWith(<span class="built_in">String</span> suffix)<span class="comment">//用来比较当前字符串的起始字符或子字符串prefix和终止字符或子字符串suffix是否和当前字符串相同，重载方法中同时还可以指定比较的开始位置offset。</span></span><br><span class="line">contains(<span class="built_in">String</span> str)<span class="comment">//判断参数s是否被包含在字符串中，并返回一个布尔类型的值。</span></span><br><span class="line"><span class="built_in">String</span>[] split(<span class="built_in">String</span> str)<span class="comment">//将str作为分隔符进行字符串分解，分解后的字字符串在字符串数组中返回。</span></span><br></pre></td></tr></table></figure></p>
+<p><br><br></p>
+<h2 id="四、字符串与基本数据类型的转换"><a href="#四、字符串与基本数据类型的转换" class="headerlink" title="四、字符串与基本数据类型的转换"></a>四、字符串与基本数据类型的转换</h2><h3 id="Ⅰ字符串转换为基本数据类型"><a href="#Ⅰ字符串转换为基本数据类型" class="headerlink" title="Ⅰ字符串转换为基本数据类型"></a>Ⅰ字符串转换为基本数据类型</h3><ol>
+<li>public static byte parseByte(String s)</li>
+<li>public static short parseShort(String s)</li>
+<li>public static short parseInt(String s)</li>
+<li>public static long parseLong(String s)</li>
+<li>public static float parseFloat(String s)</li>
+<li>public static double parseDouble(String s)</li>
+</ol>
+<h3 id="Ⅱ-基本数据类型转换为字符串类型"><a href="#Ⅱ-基本数据类型转换为字符串类型" class="headerlink" title="Ⅱ 基本数据类型转换为字符串类型"></a>Ⅱ 基本数据类型转换为字符串类型</h3><ol>
+<li>static String valueOf(char data[])</li>
+<li>static String valueOf(char data[], int offset, int count)</li>
+<li>static String valueOf(boolean b)</li>
+<li>static String valueOf(char c)</li>
+<li>static String valueOf(int i)</li>
+<li>static String valueOf(long l)</li>
+<li>static String valueOf(float f)</li>
+<li>static String valueOf(double d)</li>
+</ol>
 
-注意：可以将List&lt;String&gt;传递给类型List的参数，但是不能将它传递给类型List&lt;Object&gt;的参数，泛型有子类型化的规则，List&lt;String&gt;是原生态类型List的子类型，而不是参数化类型List&lt;Object&gt;的子类型。如果使用像List这样的原生态类型，就会失掉类型安全性，但是如果使用像List&lt;Object&gt;这样的参数化类型，就不会。
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/String/">String</a>
+  </div>
 
- 无限制的通配符类型：如果要使用泛型，但是不确定或者不关心实际的参数类型，就可以使用一个问号代替，符号表示：&lt;?&gt;
- 通配符类型和原生态类型的区别：通配符类型是安全的，但是原生态类型则不安全。由于可以将任何元素放进使用原生态类型的集合中，因此很容易破坏该集合的类型约束条件，但是不能将任何元素（null除外）放到Collection&lt;?&gt;中。
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
 
- 不要在新代码中使用原生态类型
- 两个例外：两者都源于“泛型信息可以在运行时被擦除”，
-  1.在类文字中必须使用原生态类型，规范不允许使用参数化类型，
-  2.与instanceof有关，泛型信息可以在运行时被擦除，在参数化类型而非无限制通配符的类型上使用instanceof是非法的。
 
- Set&lt;Object&gt;是个参数化类型，表示可以包含任何对象类型的一个集合
- Set&lt;?&gt;是一个通配符类型，表示只能包含某种未知对象类型的一个集合
- Set是一个原生态类型，它脱离了泛型系统。     
- 总之，原生态类型是不安全的
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-02-03T12:37:08.000Z"><a href="/2017/02/03/工厂方法模式/">2017-02-03</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/02/03/工厂方法模式/">工厂方法模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="一、工厂模式定义"><a href="#一、工厂模式定义" class="headerlink" title="一、工厂模式定义"></a>一、工厂模式定义</h2><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;工厂方法模式，又称工厂模式、多态工厂模式和虚拟构造器模式，通过定义工厂父类负责定义创建对象的公共接口，而子类则负责生成具体的对象。<br><br></p>
+<h2 id="二、主要作用"><a href="#二、主要作用" class="headerlink" title="二、主要作用"></a>二、主要作用</h2><p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将类的实例化（具体产品的创建）延迟到工厂类的子类（具体工厂）中完成，即由子类来决定应该实例化（创建）哪一个类。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/设计模式/">设计模式</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-02-03T12:37:08.000Z"><a href="/2017/02/03/工厂模式/">2017-02-03</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2017/02/03/工厂模式/">工厂方法模式</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="一、工厂模式定义"><a href="#一、工厂模式定义" class="headerlink" title="一、工厂模式定义"></a>一、工厂模式定义</h2><p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;工厂方法模式，又称工厂模式、多态工厂模式和虚拟构造器模式，通过定义工厂父类负责定义创建对象的公共接口，而子类则负责生成具体的对象。<br><br></p>
+<h2 id="二、主要作用"><a href="#二、主要作用" class="headerlink" title="二、主要作用"></a>二、主要作用</h2><p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将类的实例化（具体产品的创建）延迟到工厂类的子类（具体工厂）中完成，即由子类来决定应该实例化（创建）哪一个类。</p>
+<p><br></p>
+<h2 id="三、解决的问题"><a href="#三、解决的问题" class="headerlink" title="三、解决的问题"></a>三、解决的问题</h2><p>工厂一旦需要生产新产品就需要修改工厂类的方法逻辑，违背了“开放 - 关闭原则</p>
+<blockquote>
+<ol>
+<li>即简单工厂模式的缺点</li>
+<li>之所以可以解决简单工厂的问题，是因为工厂方法模式把具体产品的创建推迟到工厂类的子类（具体工厂）中，此时工厂类不再负责所有产品的创建，而只是给出具体工厂必须实现的接口，这样工厂方法模式在添加新产品的时候就不修改工厂类逻辑而是添加新的工厂子类，符合开放封闭原则，克服了简单工厂模式中缺点</li>
+</ol>
+</blockquote>
+<p><br></p>
+<h2 id="四、UML类图"><a href="#四、UML类图" class="headerlink" title="四、UML类图"></a>四、UML类图</h2><p><img src="../gongchang.jpg" alt="工厂模式UML"></p>
+<h2 id="五、使用步骤"><a href="#五、使用步骤" class="headerlink" title="五、使用步骤"></a>五、使用步骤</h2><ol>
+<li>创建<strong>抽象工厂类</strong>，定义具体工厂的公共接口</li>
+<li>创建<strong>抽象产品类</strong>，定义具体产品的公共接口</li>
+<li>创建<strong>具体产品类</strong>，继承抽象产品类，定义生产的具体产品</li>
+<li>创建<strong>具体工厂类</strong>，继承抽象工厂类，定义创建对应具体产品实例的方法</li>
+<li>外界通过调用具体工厂类的方法，从而创建不同<strong>具体产品类的实例</strong></li>
+</ol>
+<p><br></p>
+<h2 id="六、缺点"><a href="#六、缺点" class="headerlink" title="六、缺点"></a>六、缺点</h2><blockquote>
+<p>1.添加新产品时，除了增加新产品类外，还要提供与之对应的具体工厂类，系统类的个数将成对增加，在一定程度上增加了系统的复杂度；同时，有更多的类需要编译和运行，会给系统带来一些额外的开销；<br>2.由于考虑到系统的可扩展性，需要引入抽象层，在客户端代码中均使用抽象层进行定义，增加了系统的抽象性和理解难度，且在实现时可能需要用到DOM、反射等技术，增加了系统的实现难度。<br>3.虽然保证了工厂方法内的对修改关闭，但对于使用工厂方法的类，如果要更换另外一种产品，仍然需要修改实例化的具体工厂类；<br>4.一个具体工厂只能创建一种具体产品</p>
+</blockquote>
+<h2 id="七、应用场景"><a href="#七、应用场景" class="headerlink" title="七、应用场景"></a>七、应用场景</h2><blockquote>
+<p>1.当一个类不知道它所需要的对象的类时<br>在工厂方法模式中，客户端不需要知道具体产品类的类名，只需要知道所对应的工厂即可；<br>2.当一个类希望通过其子类来指定创建对象时<br>在工厂方法模式中，对于抽象工厂类只需要提供一个创建产品的接口，而由其子类来确定具体要创建的对象，利用面向对象的多态性和里氏代换原则，在程序运行时，子类对象将覆盖父类对象，从而使得系统更容易扩展。<br>3.将创建对象的任务委托给多个工厂子类中的某一个，客户端在使用时可以无须关心是哪一个工厂子类创建产品子类，需要时再动态指定，可将具体工厂类的类名存储在配置文件或数据库中。</p>
+</blockquote>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/设计模式/">设计模式</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-09-12T11:35:25.000Z"><a href="/2015/09/12/当心字符串连接的性能/">2015-09-12</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/09/12/当心字符串连接的性能/">当心字符串连接的性能</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    字符串连接操作符(+)是把多个字符串合并为一个字符串的便利途径,但是它不适合运用在大规模的场景中.为连接n个字符串而重复地使用字符串连接操作符,需要n的平方级的时间,当两个字符串连接的时候,它们的内容都要拷贝</p>
+</blockquote>
+<h4 id="为了获得可以接受的性能-可以使用StringBuilder替代String-节省时间"><a href="#为了获得可以接受的性能-可以使用StringBuilder替代String-节省时间" class="headerlink" title="为了获得可以接受的性能,可以使用StringBuilder替代String,节省时间."></a>为了获得可以接受的性能,可以使用StringBuilder替代String,节省时间.</h4><h4 id="另一种方法是-使用字符数组-或者每次只处理一个字符串-而不是将它们组合起来"><a href="#另一种方法是-使用字符数组-或者每次只处理一个字符串-而不是将它们组合起来" class="headerlink" title="另一种方法是:使用字符数组,或者每次只处理一个字符串,而不是将它们组合起来."></a>另一种方法是:使用字符数组,或者每次只处理一个字符串,而不是将它们组合起来.</h4>
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java编程/">java编程</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-09-08T05:44:16.000Z"><a href="/2015/09/08/如果需要精确的答案，请避免使用float和double/">2015-09-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/09/08/如果需要精确的答案，请避免使用float和double/">如果需要精确的答案，请避免使用float和double</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="double和float的初衷"><a href="#double和float的初衷" class="headerlink" title="double和float的初衷"></a>double和float的初衷</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float和double类型主要是为了科学计算和工程而设计的,它们执行二进制浮点运算,这是为了在广泛的数值计算上提供较为精确的快速近似运算而设计的.然而它们并没有提供完全精确的结果,所以不应该用于需要精确结果的场合,尤其是货币计算,因为要让float和double类型精确地表示0.1是不可能的.</p>
+<h2 id="what-should-we-do"><a href="#what-should-we-do" class="headerlink" title="what should we do?"></a>what should we do?</h2><blockquote>
+<p>1.为了解决这一问题,需要使用BigDecimal,int或者long进行货币运算<br>2.使用BigDecimal:与基本运算类型相比,这样做很不方便,而且很慢.但是使用它可以按照法定要求的舍入行为进行业务计算.<br>3.除了BigDecimal之外,还有一种办法就是使用int和long,如果数值没超过9位十进制数字,可以使用int,如果不超过18位数字,可以使用long,如果数值超过18位,就必须使用BigDecimal</p>
+</blockquote>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java编程/">java编程</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-09-07T11:31:55.000Z"><a href="/2015/09/07/通过接口引用对象/">2015-09-07</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/09/07/通过接口引用对象/">通过接口引用对象</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>应该使用接口而不是用类作为参数的类型,更一般地讲:应该优先使用接口而不是类来引用对象,如果有合适的接口类型存在,那么对于参数,返回值,变量和域来说,就都应该使用接口类型进行声明…..只有当利用构造器创建某个对象的时候,才真正需要引用这个对象的类.</p>
+<p>好处:它能使程序变得更加灵活,当决定要更换实现时,只改变其中的构造器中类的名称即可,周围的所有代码都可以正常工作….</p>
+<p>改变实现的好处:因为新的实现可以提供更好的性能,或者因为它提供了期望得到的额外类型.</p>
+</blockquote>
+<p>注意：<code>新的实现必须要提供相同的功能才能去替换</code></p>
+<h2 id="不适合用接口引用对象的情形"><a href="#不适合用接口引用对象的情形" class="headerlink" title="不适合用接口引用对象的情形"></a>不适合用接口引用对象的情形</h2><pre><code>1. 如果没有合适的接口存在,完全可以用类而不是用接口来引用对象
+2. 对象属于一个框架,而框架的基本类型是类而不是接口
+2. 类实现了接口,但是它提供了接口中不存在的额外方法
 </code></pre>
       
     </div>
@@ -148,49 +423,6 @@
         
   
   <div class="tags">
-    <a href="/tags/java注意事项/">java注意事项</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-17T01:51:13.000Z"><a href="/2015/08/17/考虑实现Comparable/">2015-08-17</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/08/17/考虑实现Comparable/">考虑实现Comparable</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>compareTo是comparable接口中唯一的方法。<br>与equals方法不同的是，在跨越不同的类的时候，compareTo可以不做比较：如果两个被比较的对象引用不用类的对象，那么它可以抛出ClassCastException异常。<br>依赖于比较关系的类包括有序集合类TreeSet和TreeMap,以及工具类Collection和Arrays，他们内部都包含有搜索和排序算法。<br>告诫：无法在用新的值组建扩展可实例化的类时，同时保持compareTo约定，除非放弃面向对象的抽象优势。<br>另外就是compareTo方法中是不需要转换类型，因为它是进行排序的，而不是进行等同行的比较，所以不需要进行转换类型的，也不需要进行类型判断。<br>还有就是有多个关键域，那么就需要按照最关键的域开始进行比较，若相同，则依次向下比较，这样的结果才可能是希望看到的结果。</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
     <a href="/tags/java优化/">java优化</a>
   </div>
 
@@ -210,17 +442,21 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-08-11T19:51:32.000Z"><a href="/2015/08/12/始终要覆盖toString/">2015-08-12</a></time>
+        <time datetime="2015-09-03T09:28:22.000Z"><a href="/2015/09/03/每个方法抛出的异常都要有文档/">2015-09-03</a></time>
       
       
   
-    <h1 class="title"><a href="/2015/08/12/始终要覆盖toString/">始终要覆盖toString</a></h1>
+    <h1 class="title"><a href="/2015/09/03/每个方法抛出的异常都要有文档/">每个方法抛出的异常都要有文档</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>建议所有的类都覆盖这个方法。在实际应用中，toString方法应该返回对象中包含的所有值得关注的信息。<br>在实现toString方法的时候，必须做出一个很重要的决定：是否在文档中指定返回值的格式。如果指定了格式，最好再提供一个相匹配的静态工厂或者构造器，以便程序员可以很容易地在对象和它的字符串之间来回转换。<br>但是无论是否决定指定格式，都应该在编码中添加文档注释指明自己的意图。都应该提供一种编程式的访问途径</p>
+        <ol>
+<li>始终要单独地声明受检的异常,并且利用Java的@throws标记,准确地记录下抛出每个异常的条件.</li>
+<li>使用Javadoc的@throws标签记录下一个方法可能抛出的每个未受检异常,但是不要使用throws关键字将未受检的异常包含在方法的声明中.</li>
+<li>如果一个类中的许多方法出于同样的原因而抛出同一个异常,在该类的文档注释中对这个异常建立文档,这是可以接受的,而不是为每个方法单独建立文档….要为编写的每个方法所能抛出的异常建立文档,对于未受检和受检的异常以及对于抽象和具体的方法也都一样.要为每个受检异常提供单独的throws字句,不要为未受检的异常提供throws字句,如果没有为可以抛出的异常建立文档,其他人就很难或者根本不可能有效地使用你的类和接口</li>
+</ol>
 
       
     </div>
@@ -235,170 +471,6 @@
   
   <div class="tags">
     <a href="/tags/java优化/">java优化</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-09T05:45:41.000Z"><a href="/2015/08/09/消除非受检警告/">2015-08-09</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/08/09/消除非受检警告/">消除非受检警告</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>当泛型编程时，会遇到很多编译器警告：非受检强制转化警告、非受检方法调用警告、非受检普通数组创建警告、非受检转换警告<br>要尽可能消除每一个非受检警告。<br>如果无法消除警告，同时可以证明引起警告的代码是类型安全的，可以用一个@SuppressWarnings(“unchecked”)注解来禁止这条警告，可以用任何粒度的级别中，但是应该始终在尽可能小的范围中使用SuppressWarnings注解，永远不要在整个类中使用SuppressWarnings，可能会掩盖了重要的警告。<br>其次，将SuppressWarnings放在return语句中是非法的，应该声明一个局部变量来保存返回值，并注解其声明。</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/java注意事项/">java注意事项</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-06T08:44:26.000Z"><a href="/2015/08/06/列表优先于数组/">2015-08-06</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/08/06/列表优先于数组/">列表优先于数组</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>数组与泛型的区别一：数组是协变的，泛型是不可变的</p>
-<p>数组与泛型的区别二：<br>数组是具体化的，数组只在运行时才知道并检查他的元素类型约束。<br>泛型在编译前就检查它的元素类型，在编译时强化它们的类型信息，在运行时丢弃(或者擦除)它的元素类型信息，而且泛型是通过擦除来实现的。</p>
-<p>因此，数组和泛型不能很好地混合使用。<br>数组提供了运行时的类型安全，但是没有编译的类型安全，反之对于泛型也一样，如果发现将他们混合起来，应该用列表代替数组</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-02T10:23:34.000Z"><a href="/2015/08/02/优先考虑泛型/">2015-08-02</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/08/02/优先考虑泛型/">优先考虑泛型</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>如果一不小心创建了泛型数组，在java中这是不允许的，但是有两种解决办法：一：直接绕过创建泛型数组的禁令：创建一个Object的数组，并将它转成泛型数组类型<br>Object object = (E[]) new Object[ARRAY_SIZE];<br>二：将elements域的类型从E[]改为Object[]。<br>使用泛型比使用需要在客户端代码中进行转换的类型来得更安全，也更容易，只要时间允许，就把现有的类型都返型化</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-01T04:42:12.000Z"><a href="/2015/08/01/慎用可变参数/">2015-08-01</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/08/01/慎用可变参数/">慎用可变参数</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>在java1.5发行版本中增加了可变参数的方法,可以接受0个或者多个指定类型的参数.不过,最好在使用可变参数前增加一个只有一个参数的方法,来提高性能或者代码可读性.可变参数是为printf而设计的,为了核心地反射机制.利用可变参数可以使printf和反射机制都极大地收益.<br>不必改造具有final数组参数的每个方法,只当确定是在数量不定的值上执行调用时才使用可变参数.<br>在重视性能的情况下,使用可变参数机制要特别小心,可变参数的每次调用都会导致进行一次数组分配和初始化.<br>因此,应该谨慎考虑使用可变参数,提高开发效率.</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/java注意事项/">java注意事项</a>
   </div>
 
         <!-- partial('post/share') -->
@@ -415,7 +487,7 @@
 <nav id="pagination">
   
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Nächste Seite &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </nav>
@@ -423,7 +495,7 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="search" name="q" results="0" placeholder="Search">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
@@ -432,27 +504,27 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Neueste Artikel</h3>
+  <h3 class="title">Recent Posts</h3>
   <ul class="entry">
     
       <li>
-        <a href="/2018/08/10/优先考虑泛型方法/">优先考虑泛型方法</a>
+        <a href="/2018/09/16/基本类型优于装箱基本类型/">基本类型优于装箱基本类型</a>
       </li>
     
       <li>
-        <a href="/2015/08/20/请不要在新代码中使用原生态类型/">请不要在新代码中使用原生态类型</a>
+        <a href="/2018/02/03/String常用方法总结/">String常用方法总结</a>
       </li>
     
       <li>
-        <a href="/2015/08/17/考虑实现Comparable/">考虑实现Comparable</a>
+        <a href="/2017/02/03/工厂方法模式/">工厂方法模式</a>
       </li>
     
       <li>
-        <a href="/2015/08/12/始终要覆盖toString/">始终要覆盖toString</a>
+        <a href="/2017/02/03/工厂模式/">工厂方法模式</a>
       </li>
     
       <li>
-        <a href="/2015/08/09/消除非受检警告/">消除非受检警告</a>
+        <a href="/2015/09/12/当心字符串连接的性能/">当心字符串连接的性能</a>
       </li>
     
   </ul>
@@ -464,9 +536,15 @@
   <h3 class="title">Tags</h3>
   <ul class="entry">
   
-    <li><a href="/tags/java优化/">java优化</a><small>3</small></li>
+    <li><a href="/tags/String/">String</a><small>1</small></li>
+  
+    <li><a href="/tags/java优化/">java优化</a><small>6</small></li>
   
     <li><a href="/tags/java注意事项/">java注意事项</a><small>4</small></li>
+  
+    <li><a href="/tags/java编程/">java编程</a><small>3</small></li>
+  
+    <li><a href="/tags/设计模式/">设计模式</a><small>2</small></li>
   
   </ul>
 </div>
@@ -474,9 +552,9 @@
 
   
 <div class="widget tagcloud">
-  <h3 class="title">Tag-Cloud</h3>
+  <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/java优化/" style="font-size: 10px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 20px;">java注意事项</a>
+    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 17.5px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 15px;">java编程</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
   </div>
 </div>
 

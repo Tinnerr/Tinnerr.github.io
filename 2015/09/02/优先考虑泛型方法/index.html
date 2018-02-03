@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>优先考虑泛型方法 | 靳平的博客</title>
+  <meta name="author" content="jinping Tinner" />
+
+  
+  <meta name="description" content="泛型方法的一个显著特征是：无需明确指定类型参数的值，不像调用泛型构造器的时候是必须指定的。类型限制&amp;lt;T extends Comparable&amp;gt;可以读作：“针对可以与自身进行比较的每个类型T ”泛型方法还有一个比较重要的概念叫做类型推导。在创建一个泛型集合实例时，这样写    Map   " />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="优先考虑泛型方法" />
+  <meta property="og:site_name" content="靳平的博客" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="靳平的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">靳平的博客</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">我的主页</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-09-02T08:59:44.000Z"><a href="/2015/09/02/优先考虑泛型方法/">2015-09-02</a></time>
+      
+      
+  
+    <h1 class="title">优先考虑泛型方法</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>泛型方法的一个显著特征是：无需明确指定类型参数的值，不像调用泛型构造器的时候是必须指定的。<br>类型限制&lt;T extends Comparable<t>&gt;可以读作：“针对可以与自身进行比较的每个类型T ”<br>泛型方法还有一个比较重要的概念叫做类型推导。<br>在创建一个泛型集合实例时，这样写    Map<string ,="" integer="">   map  =  new  HashMap<string ,="" integer="">();<br>我们在调用泛型HashMap的构造器时，在new HashMap之后使用<string ,="" integer="">指明了类型参数。那么我们在使用泛型方法的时候是否也需要这样做呢？<br>写出这样的代码 ：Set.union<string>(s1,s2);   也就是说是否在需要调用方法的时候像调用构造器的那样在方法名后面指明类型参数。<br>泛型方法会根据具体传入的s1,s2的类型，来推断出类型参数E。如果传入的s1,s2是HashSet<string>，那么类型参数E就是String；<br>如果传入的s1,s2是HashSet<integer>，那么类型参数E就是Integer。<br>一句话就是：泛型方法的类型参数根据传入的实际参数的类型而定，不需要再调用时显示指明。</integer></string></string></string></string></string></t></p>
+<p>泛型方法就像泛型一样，使用起来比要求客户端转换输入参数并返回值的方法来的更加安全，也更加容易。就像类型一样，你应该确保新方法可以不用转换就能使用，这通常意味着要将他们进行返型化，并且就像类型一样，还应该将现有的方法泛型化，不会破坏现有的客户端。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java优化/">java优化</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/16/基本类型优于装箱基本类型/">基本类型优于装箱基本类型</a>
+      </li>
+    
+      <li>
+        <a href="/2018/02/03/String常用方法总结/">String常用方法总结</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/工厂方法模式/">工厂方法模式</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/工厂模式/">工厂方法模式</a>
+      </li>
+    
+      <li>
+        <a href="/2015/09/12/当心字符串连接的性能/">当心字符串连接的性能</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/String/">String</a><small>1</small></li>
+  
+    <li><a href="/tags/java优化/">java优化</a><small>6</small></li>
+  
+    <li><a href="/tags/java注意事项/">java注意事项</a><small>4</small></li>
+  
+    <li><a href="/tags/java编程/">java编程</a><small>3</small></li>
+  
+    <li><a href="/tags/设计模式/">设计模式</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 17.5px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 15px;">java编程</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2018 jinping Tinner
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

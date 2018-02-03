@@ -1,0 +1,208 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>基本类型优于装箱基本类型 | 靳平的博客</title>
+  <meta name="author" content="jinping Tinner" />
+
+  
+  <meta name="description" content="什么是装箱类型？   &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java中包含8种基本数据类型和3中引用数据类型,其中每个基本数据类型都有一个对应的引用类型,称作装箱基本类型,装箱基本数据类型中对应于int,double和boolean的是Integer,Double和" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="基本类型优于装箱基本类型" />
+  <meta property="og:site_name" content="靳平的博客" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="靳平的博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">靳平的博客</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">我的主页</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-09-16T02:38:31.000Z"><a href="/2018/09/16/基本类型优于装箱基本类型/">2018-09-16</a></time>
+      
+      
+  
+    <h1 class="title">基本类型优于装箱基本类型</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="什么是装箱类型？"><a href="#什么是装箱类型？" class="headerlink" title="什么是装箱类型？"></a>什么是装箱类型？</h2><p>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java中包含8种基本数据类型和3中引用数据类型,其中每个基本数据类型都有一个对应的引用类型,称作装箱基本类型,装箱基本数据类型中对应于int,double和boolean的是Integer,Double和Boolean</p>
+<blockquote>
+<p>java 1.5之后增加了自动装箱和自动拆箱.</p>
+<p>在基本数据类型和装箱基本类型之间有三个主要区别:</p>
+<pre><code>1. 基本类型只有值,而装箱基本类型具有与他们的值不同的同一性;
+2. 基本类型只有功能完备的值,而每个装箱基本类型除了它对应基本类型的所有功能值之外,还有个非功能值:null;
+3. 基本类型通常比装箱基本类型更节省时间和空间.
+</code></pre><p>用到装箱基本类型的情况:</p>
+<pre><code>1. 作为集合中的元素,键和值,必须将装箱基本类型放在集合中;
+2. 在参数化类型中,必须使用装箱基本类型作为类型参数,因为java不允许使用基本类型;
+3. 进行反射的方法调用中,必须使用装箱基本类型.
+</code></pre></blockquote>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java优化/">java优化</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Recent Posts</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/09/16/基本类型优于装箱基本类型/">基本类型优于装箱基本类型</a>
+      </li>
+    
+      <li>
+        <a href="/2018/02/03/String常用方法总结/">String常用方法总结</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/工厂方法模式/">工厂方法模式</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/工厂模式/">工厂方法模式</a>
+      </li>
+    
+      <li>
+        <a href="/2015/09/12/当心字符串连接的性能/">当心字符串连接的性能</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/String/">String</a><small>1</small></li>
+  
+    <li><a href="/tags/java优化/">java优化</a><small>6</small></li>
+  
+    <li><a href="/tags/java注意事项/">java注意事项</a><small>4</small></li>
+  
+    <li><a href="/tags/java编程/">java编程</a><small>3</small></li>
+  
+    <li><a href="/tags/设计模式/">设计模式</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 17.5px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 15px;">java编程</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2018 jinping Tinner
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>
