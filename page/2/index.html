@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>Page 2 | 靳平的博客</title>
+  <title>Seite 2 | 靳平の博客</title>
   <meta name="author" content="jinping Tinner" />
 
   
@@ -13,7 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
   
-  <meta property="og:site_name" content="靳平的博客" />
+  <meta property="og:site_name" content="靳平の博客" />
 
   
   
@@ -26,7 +26,7 @@
   <link href="/css/images/favicon.ico" rel="icon" />
   
 
-  <link rel="alternate" href="/atom.xml" title="靳平的博客" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="靳平の博客" type="application/atom+xml">
   <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
   <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
   
@@ -40,7 +40,7 @@
 
 <body>
   <header id="header" class="inner"><div class="alignleft">
-  <h1><a href="/">靳平的博客</a></h1>
+  <h1><a href="/">靳平の博客</a></h1>
   <h2><a href="/"></a></h2>
 </div>
 <nav id="main-nav" class="alignright">
@@ -56,6 +56,104 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-09-07T11:31:55.000Z"><a href="/2015/09/07/通过接口引用对象/">2015-09-07</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/09/07/通过接口引用对象/">通过接口引用对象</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>应该使用接口而不是用类作为参数的类型,更一般地讲:应该优先使用接口而不是类来引用对象,如果有合适的接口类型存在,那么对于参数,返回值,变量和域来说,就都应该使用接口类型进行声明…..只有当利用构造器创建某个对象的时候,才真正需要引用这个对象的类.</p>
+<p>好处:它能使程序变得更加灵活,当决定要更换实现时,只改变其中的构造器中类的名称即可,周围的所有代码都可以正常工作….</p>
+<p>改变实现的好处:因为新的实现可以提供更好的性能,或者因为它提供了期望得到的额外类型.</p>
+</blockquote>
+<p>注意：<code>新的实现必须要提供相同的功能才能去替换</code></p>
+<h2 id="不适合用接口引用对象的情形"><a href="#不适合用接口引用对象的情形" class="headerlink" title="不适合用接口引用对象的情形"></a>不适合用接口引用对象的情形</h2><pre><code>1. 如果没有合适的接口存在,完全可以用类而不是用接口来引用对象
+2. 对象属于一个框架,而框架的基本类型是类而不是接口
+2. 类实现了接口,但是它提供了接口中不存在的额外方法
+</code></pre>
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java优化/">java优化</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-09-03T09:28:22.000Z"><a href="/2015/09/03/每个方法抛出的异常都要有文档/">2015-09-03</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/09/03/每个方法抛出的异常都要有文档/">每个方法抛出的异常都要有文档</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <ol>
+<li>始终要单独地声明受检的异常,并且利用Java的@throws标记,准确地记录下抛出每个异常的条件.</li>
+<li>使用Javadoc的@throws标签记录下一个方法可能抛出的每个未受检异常,但是不要使用throws关键字将未受检的异常包含在方法的声明中.</li>
+<li>如果一个类中的许多方法出于同样的原因而抛出同一个异常,在该类的文档注释中对这个异常建立文档,这是可以接受的,而不是为每个方法单独建立文档….要为编写的每个方法所能抛出的异常建立文档,对于未受检和受检的异常以及对于抽象和具体的方法也都一样.要为每个受检异常提供单独的throws字句,不要为未受检的异常提供throws字句,如果没有为可以抛出的异常建立文档,其他人就很难或者根本不可能有效地使用你的类和接口</li>
+</ol>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java优化/">java优化</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
   <article class="post">
   
   <div class="post-content">
@@ -334,89 +432,11 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-06T08:44:26.000Z"><a href="/2015/08/06/列表优先于数组/">2015-08-06</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/08/06/列表优先于数组/">列表优先于数组</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>数组与泛型的区别一：数组是协变的，泛型是不可变的</p>
-<p>数组与泛型的区别二：<br>数组是具体化的，数组只在运行时才知道并检查他的元素类型约束。<br>泛型在编译前就检查它的元素类型，在编译时强化它们的类型信息，在运行时丢弃(或者擦除)它的元素类型信息，而且泛型是通过擦除来实现的。</p>
-<p>因此，数组和泛型不能很好地混合使用。<br>数组提供了运行时的类型安全，但是没有编译的类型安全，反之对于泛型也一样，如果发现将他们混合起来，应该用列表代替数组</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-02T10:23:34.000Z"><a href="/2015/08/02/优先考虑泛型/">2015-08-02</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/08/02/优先考虑泛型/">优先考虑泛型</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>如果一不小心创建了泛型数组，在java中这是不允许的，但是有两种解决办法：一：直接绕过创建泛型数组的禁令：创建一个Object的数组，并将它转成泛型数组类型<br>Object object = (E[]) new Object[ARRAY_SIZE];<br>二：将elements域的类型从E[]改为Object[]。<br>使用泛型比使用需要在客户端代码中进行转换的类型来得更安全，也更容易，只要时间允许，就把现有的类型都返型化</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Vorherige Seite</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Nächste Seite &raquo;</a>
   </nav>
 
 </nav>
@@ -424,7 +444,7 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="search" name="q" results="0" placeholder="Suche">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
@@ -433,7 +453,7 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
+  <h3 class="title">Neueste Artikel</h3>
   <ul class="entry">
     
       <li>
@@ -445,15 +465,15 @@
       </li>
     
       <li>
-        <a href="/2017/02/03/工厂方法模式/">工厂方法模式</a>
-      </li>
-    
-      <li>
         <a href="/2017/02/03/工厂模式/">工厂方法模式</a>
       </li>
     
       <li>
-        <a href="/2015/09/12/当心字符串连接的性能/">当心字符串连接的性能</a>
+        <a href="/2017/02/03/工厂方法模式/">工厂方法模式</a>
+      </li>
+    
+      <li>
+        <a href="/2015/10/20/redis学习/">redis学习</a>
       </li>
     
   </ul>
@@ -473,7 +493,11 @@
   
     <li><a href="/tags/java编程/">java编程</a><small>3</small></li>
   
+    <li><a href="/tags/数据库/">数据库</a><small>1</small></li>
+  
     <li><a href="/tags/设计模式/">设计模式</a><small>2</small></li>
+  
+    <li><a href="/tags/集群/">集群</a><small>1</small></li>
   
   </ul>
 </div>
@@ -481,9 +505,9 @@
 
   
 <div class="widget tagcloud">
-  <h3 class="title">Tag Cloud</h3>
+  <h3 class="title">Tag-Cloud</h3>
   <div class="entry">
-    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 17.5px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 15px;">java编程</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
+    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 17.5px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 15px;">java编程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a> <a href="/tags/集群/" style="font-size: 10px;">集群</a>
   </div>
 </div>
 
