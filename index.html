@@ -300,29 +300,24 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-10-20T12:37:24.000Z"><a href="/2015/10/20/redis学习/">2015-10-20</a></time>
+        <time datetime="2015-11-01T07:44:26.000Z"><a href="/2015/11/01/dubbo-一/">2015-11-01</a></time>
       
       
   
-    <h1 class="title"><a href="/2015/10/20/redis学习/">redis学习</a></h1>
+    <h1 class="title"><a href="/2015/11/01/dubbo-一/">dubbo(一)</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><h3 id="1-redis是什么"><a href="#1-redis是什么" class="headerlink" title="1.redis是什么"></a>1.redis是什么</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;REmote Dictionary Server(Redis)是一个key-value存储系统，redis支持自动/手动持久化</p>
-<h3 id="2-redis的性能"><a href="#2-redis的性能" class="headerlink" title="2.redis的性能"></a>2.redis的性能</h3><blockquote>
-<p>测试完成了50个并发执行十万个数据请求；<br>设置和获取的值是一个256字节字符串；<br>结果：读的速度是11万次/s，写的速度是81000次/s</p>
-</blockquote>
-<h3 id="3-redis支持的数据类型"><a href="#3-redis支持的数据类型" class="headerlink" title="3.redis支持的数据类型"></a>3.redis支持的数据类型</h3><blockquote>
-<p>String、hash、list、set、sorted set</p>
-</blockquote>
-<h2 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h2><h3 id="1-安装依赖"><a href="#1-安装依赖" class="headerlink" title="1.安装依赖"></a>1.安装依赖</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc-c++ -y</span><br></pre></td></tr></table></figure>
-<h3 id="2-创建安装目录、编译、安装"><a href="#2-创建安装目录、编译、安装" class="headerlink" title="2.创建安装目录、编译、安装"></a>2.创建安装目录、编译、安装</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /usr/local/redis </span><br><span class="line">tar zxvf redis<span class="number">-3.0</span><span class="number">.6</span>.tar.gz</span><br><span class="line">cd redis<span class="number">-3.0</span><span class="number">.6</span></span><br><span class="line">make </span><br><span class="line">make PREFIX=<span class="regexp">/usr/</span>local/redis install</span><br></pre></td></tr></table></figure>
-<h3 id="3-复制配置文件、启动"><a href="#3-复制配置文件、启动" class="headerlink" title="3.复制配置文件、启动"></a>3.复制配置文件、启动</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root/redis<span class="number">-3.0</span><span class="number">.6</span></span><br><span class="line">cp redis.conf /usr/local/redis/bin</span><br></pre></td></tr></table></figure>
-<p>修改/usr/local/redis/bin/redis.conf<br><img src="/2015/10/20/redis学习/1.png" alt="修改redis配置文件"><br>修改实例数量（安装完成后，默认是16）<br><img src="/2015/10/20/redis学习/2.png" alt="修改实例数量"><br>启动命令<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/redis/bin/redis-server /usr/local/redis/bin/redis.conf</span><br></pre></td></tr></table></figure></p>
-<p>查看进程<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep redis</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-打开redisClient，测试连接"><a href="#4-打开redisClient，测试连接" class="headerlink" title="4.打开redisClient，测试连接"></a>4.打开redisClient，测试连接</h3>
+        <h2 id="一、dubbo"><a href="#一、dubbo" class="headerlink" title="一、dubbo"></a>一、dubbo</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分布式企业级分布服务框架。可以用来做服务的负载均衡，将客户端浏览器的访问均摊到服务器之中。将service由一变多。</p>
+<h2 id="二、背景"><a href="#二、背景" class="headerlink" title="二、背景"></a>二、背景</h2><p><img src="/2015/11/01/dubbo-一/1.png" alt="dubbo的背景"></p>
+<h3 id="单一应用架构"><a href="#单一应用架构" class="headerlink" title="单一应用架构"></a><strong>单一应用架构</strong></h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当网站流量很小时，只需一个应用，将所有功能都部署在一起，以减少部署节点和成本。此时，用于简化增删改查工作量的数据访问框架(ORM)是关键。</p>
+<h3 id="垂直应用架构"><a href="#垂直应用架构" class="headerlink" title="垂直应用架构"></a><strong>垂直应用架构</strong></h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当访问量逐渐增大，单一应用增加机器带来的加速度越来越小，将应用拆成互不相干的几个应用，以提升效率。此时，用于加速前端页面开发的Web框架(MVC)是关键</p>
+<h3 id="分布式服务架构"><a href="#分布式服务架构" class="headerlink" title="分布式服务架构"></a><strong>分布式服务架构</strong></h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当垂直应用越来越多，应用之间交互不可避免，将核心业务抽取出来，作为独立的服务，逐渐形成稳定的服务中心，使前端应用能更快速的响应多变的市场需求。此时，用于提高业务复用及整合的分布式服务框架(RPC)是关键。</p>
+<h3 id="流动计算架构"><a href="#流动计算架构" class="headerlink" title="流动计算架构"></a><strong>流动计算架构</strong></h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当服务越来越多，容量的评估，小服务资源的浪费等问题逐渐显现，此时需增加一个调度中心基于访问压力实时管理集群容量，提高集群利用率。此时，用于提高机器利用率的资源调度和治理中心(SOA)是关键。</p>
+<h2 id="三、框架原理"><a href="#三、框架原理" class="headerlink" title="三、框架原理"></a>三、框架原理</h2><p><img src="/2015/11/01/dubbo-一/2.png" alt="dubbo的框架原理"></p>
+
       
     </div>
     
@@ -354,20 +349,42 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-10-09T03:14:29.000Z"><a href="/2015/10/09/数据库事务的四种属性/">2015-10-09</a></time>
+        <time datetime="2015-11-01T04:56:36.000Z"><a href="/2015/11/01/zookeeper-dubbo注册中心/">2015-11-01</a></time>
       
       
   
-    <h1 class="title"><a href="/2015/10/09/数据库事务的四种属性/">数据库事务的四种属性</a></h1>
+    <h1 class="title"><a href="/2015/11/01/zookeeper-dubbo注册中心/">zookeeper(dubbo注册中心)</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库事务的属性包括四大类，即ACID，这四个英文单词是Atomicity(原子性)、Consistency(一致性)、Isolation(隔离性)、Durability(持久性)。</p>
+        <h2 id="一、zookeeper"><a href="#一、zookeeper" class="headerlink" title="一、zookeeper"></a>一、zookeeper</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分布式协调服务组件<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目的：解决分布式数据事务的强一致性。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;节点：类似于路径，节点可以存储数据。</p>
+<h2 id="二、zookeeper能做什么？"><a href="#二、zookeeper能做什么？" class="headerlink" title="二、zookeeper能做什么？"></a>二、zookeeper能做什么？</h2><h4 id="1-管理配置中心"><a href="#1-管理配置中心" class="headerlink" title="1.管理配置中心"></a>1.管理配置中心</h4><h4 id="2-充当dubbo的注册中心"><a href="#2-充当dubbo的注册中心" class="headerlink" title="2.充当dubbo的注册中心"></a>2.充当dubbo的注册中心</h4><h4 id="3-管理域名"><a href="#3-管理域名" class="headerlink" title="3.管理域名"></a>3.管理域名</h4><h2 id="三、单节点安装"><a href="#三、单节点安装" class="headerlink" title="三、单节点安装"></a>三、单节点安装</h2><h3 id="1-安装jdk"><a href="#1-安装jdk" class="headerlink" title="1.安装jdk"></a>1.安装jdk</h3><h3 id="2-解压"><a href="#2-解压" class="headerlink" title="2.解压"></a>2.解压</h3><blockquote>
+<p>tar zxvf zookeeper-3.4.10.tar.gz</p>
+</blockquote>
+<h3 id="3-创建配置文件zoo-cfg"><a href="#3-创建配置文件zoo-cfg" class="headerlink" title="3.创建配置文件zoo.cfg"></a>3.创建配置文件zoo.cfg</h3><blockquote>
+<p>cd /usr/local/zookeeper/zookeeper-3.4.10/conf<br>cp zoo_sample.cfg zoo.cfg</p>
+</blockquote>
+<h3 id="4-启动"><a href="#4-启动" class="headerlink" title="4.启动"></a>4.启动</h3><p><img src="/2015/11/01/zookeeper-dubbo注册中心/1.png" alt="zoo启动"></p>
+<h2 id="四、集群安装"><a href="#四、集群安装" class="headerlink" title="四、集群安装"></a>四、集群安装</h2><h3 id="1-安装三个zookeeper"><a href="#1-安装三个zookeeper" class="headerlink" title="1.安装三个zookeeper"></a>1.安装三个zookeeper</h3><h4 id="Ⅰ-创建集群目录"><a href="#Ⅰ-创建集群目录" class="headerlink" title="Ⅰ 创建集群目录"></a>Ⅰ 创建集群目录</h4><blockquote>
+<p>mkdir -p /usr/local/zkCluster</p>
+</blockquote>
+<h4 id="Ⅱ-配置完整的一个服务"><a href="#Ⅱ-配置完整的一个服务" class="headerlink" title="Ⅱ 配置完整的一个服务"></a>Ⅱ 配置完整的一个服务</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;复制单结点至集群目录</p>
 <blockquote>
-<p>1.<strong>原子性</strong>：数据库系统保证事务的所有操作要么同时成功，要么同时失败；<br>  2.<strong>一致性</strong>：事务必须确保在开始和结束时，数据库处于正确和一致的状态。例如：没有破坏参照完整性约束；<br>  3.<strong>隔离性</strong>：一个事务对数据库的所有改动都与其他查询和事务隔离，直到事务提交；<br>  4.<strong>持久性</strong>： 一旦提交，事务所做的改动就是持久的。数据库系统必须有某种方式从崩溃和其他问题中恢复，确保数据库当前的状态不会丢失</p>
+<p>cp /usr/local/zookeeper/zookeeper-3.4.10 /usr/local/zkCluster/zk1 -rf</p>
 </blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;创建数据文件目录</p>
+<blockquote>
+<p>mkdir -p /usr/local/zkCluster/zk1/data</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在数据文件目录添加myid文件（myid文件：用于存储节点标识）<br><img src="/2015/11/01/zookeeper-dubbo注册中心/2.png" alt="myid文件"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;修改zk1/conf/zoo.cfg（zoo.cfg：用于配置集群）<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一个2888用于内部交互，一个3888用于选取leader（习惯于用这两个端口，其实可以任选）<br><img src="/2015/11/01/zookeeper-dubbo注册中心/3.png" alt="修改zoo.cfg"></p>
+<h4 id="Ⅲ-复制两份，共计三个服务"><a href="#Ⅲ-复制两份，共计三个服务" class="headerlink" title="Ⅲ 复制两份，共计三个服务"></a>Ⅲ 复制两份，共计三个服务</h4><pre><code>cd /usr/local/zkCluster
+cp -rf zk1 zk2
+cp -rf zk1 zk3
+</code></pre><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;分别修改zk2、zk3中myid、zoo.cfg文件</p>
+<h3 id="2-启动"><a href="#2-启动" class="headerlink" title="2.启动"></a>2.启动</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>注意：关闭单节点zookeeper，避免端口被占用</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2015/11/01/zookeeper-dubbo注册中心/4.png" alt="启动截图"></p>
 
       
     </div>
@@ -381,7 +398,7 @@
         
   
   <div class="tags">
-    <a href="/tags/数据库/">数据库</a>
+    <a href="/tags/集群/">集群</a>
   </div>
 
         <!-- partial('post/share') -->
@@ -400,20 +417,40 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-09-12T11:35:25.000Z"><a href="/2015/09/12/当心字符串连接的性能/">2015-09-12</a></time>
+        <time datetime="2015-10-22T14:04:47.000Z"><a href="/2015/10/22/redis集群/">2015-10-22</a></time>
       
       
   
-    <h1 class="title"><a href="/2015/09/12/当心字符串连接的性能/">当心字符串连接的性能</a></h1>
+    <h1 class="title"><a href="/2015/10/22/redis集群/">redis集群</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <blockquote>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    字符串连接操作符(+)是把多个字符串合并为一个字符串的便利途径,但是它不适合运用在大规模的场景中.为连接n个字符串而重复地使用字符串连接操作符,需要n的平方级的时间,当两个字符串连接的时候,它们的内容都要拷贝</p>
+        <h2 id="一、redis集群原理"><a href="#一、redis集群原理" class="headerlink" title="一、redis集群原理"></a>一、redis集群原理</h2><p><img src="/2015/10/22/redis集群/1.png" alt="redis集群原理"></p>
+<h2 id="二、真实集群和伪集群的区别"><a href="#二、真实集群和伪集群的区别" class="headerlink" title="二、真实集群和伪集群的区别"></a>二、真实集群和伪集群的区别</h2><h3 id="1-真实集群"><a href="#1-真实集群" class="headerlink" title="1.真实集群"></a>1.真实集群</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由真实多台服务器，组成的整体</p>
+<h3 id="2-伪集群"><a href="#2-伪集群" class="headerlink" title="2.伪集群"></a>2.伪集群</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在一台服务器，运行多个服务，模拟集群的效果</p>
+<h2 id="三、redis集群的安装"><a href="#三、redis集群的安装" class="headerlink" title="三、redis集群的安装"></a>三、redis集群的安装</h2><h3 id="1-安装ruby相关依赖"><a href="#1-安装ruby相关依赖" class="headerlink" title="1.安装ruby相关依赖"></a>1.安装ruby相关依赖</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ruby:一种简单快捷的面向对象脚本语言</p>
+<h4 id="Ⅰ在线安装"><a href="#Ⅰ在线安装" class="headerlink" title="Ⅰ在线安装"></a>Ⅰ在线安装</h4><blockquote>
+<p>yum install ruby rubygems -y<br>gem install redis –version=3.0.6</p>
 </blockquote>
-<h4 id="为了获得可以接受的性能-可以使用StringBuilder替代String-节省时间"><a href="#为了获得可以接受的性能-可以使用StringBuilder替代String-节省时间" class="headerlink" title="为了获得可以接受的性能,可以使用StringBuilder替代String,节省时间."></a>为了获得可以接受的性能,可以使用StringBuilder替代String,节省时间.</h4><h4 id="另一种方法是-使用字符数组-或者每次只处理一个字符串-而不是将它们组合起来"><a href="#另一种方法是-使用字符数组-或者每次只处理一个字符串-而不是将它们组合起来" class="headerlink" title="另一种方法是:使用字符数组,或者每次只处理一个字符串,而不是将它们组合起来."></a>另一种方法是:使用字符数组,或者每次只处理一个字符串,而不是将它们组合起来.</h4>
+<h4 id="Ⅱ离线安装"><a href="#Ⅱ离线安装" class="headerlink" title="Ⅱ离线安装"></a>Ⅱ离线安装</h4><p><img src="/2015/10/22/redis集群/2.png" alt="ruby离线安装"></p>
+<h3 id="2-配置六个redis服务"><a href="#2-配置六个redis服务" class="headerlink" title="2.配置六个redis服务"></a>2.配置六个redis服务</h3><h4 id="Ⅰ创建目录"><a href="#Ⅰ创建目录" class="headerlink" title="Ⅰ创建目录"></a>Ⅰ创建目录</h4><blockquote>
+<p>mkdir -p /opt/redis/conf<br>mkdir -p /opt/redis/data<br>mkdir -p /opt/redis/logs</p>
+<h4 id="Ⅱ创建redis-common-conf"><a href="#Ⅱ创建redis-common-conf" class="headerlink" title="Ⅱ创建redis-common.conf"></a>Ⅱ创建redis-common.conf</h4><p><img src="/2015/10/22/redis集群/3.png" alt="redis-common.conf"></p>
+</blockquote>
+<h4 id="Ⅲ-创建六个私有配置文件"><a href="#Ⅲ-创建六个私有配置文件" class="headerlink" title="Ⅲ.创建六个私有配置文件"></a>Ⅲ.创建六个私有配置文件</h4><p>redis-6379.conf<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">include /opt/redis/conf/redis-common.conf</span><br><span class="line">#记录进程号</span><br><span class="line">pidfile /<span class="keyword">var</span>/run/redis<span class="number">-6379.</span>pid</span><br><span class="line">#端口号</span><br><span class="line">port <span class="number">6379</span></span><br><span class="line">#日志文件</span><br><span class="line">logfile <span class="string">"/opt/redis/logs/redis-6379.log"</span></span><br><span class="line">#rdb自动持久文件</span><br><span class="line">dbfilename dump<span class="number">-6379.</span>rdb</span><br><span class="line">#aof自动持久文件</span><br><span class="line">appendfilename <span class="string">"appendonly-6379.aof"</span></span><br><span class="line">#自动生成集群文件</span><br><span class="line">cluster-config-file nodes<span class="number">-6379.</span>conf</span><br></pre></td></tr></table></figure></p>
+<h4 id="Ⅳ-运行"><a href="#Ⅳ-运行" class="headerlink" title="Ⅳ.运行"></a>Ⅳ.运行</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>注意：关闭单节点的redis</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2015/10/22/redis集群/4.png" alt="关闭单节点redis"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;启动6个redis服务<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2015/10/22/redis集群/5.png" alt="启动服务"></p>
+<h3 id="3-通过ruby脚本创建集群"><a href="#3-通过ruby脚本创建集群" class="headerlink" title="3.通过ruby脚本创建集群"></a>3.通过ruby脚本创建集群</h3><h4 id="Ⅰ复制ruby脚本至安装路径"><a href="#Ⅰ复制ruby脚本至安装路径" class="headerlink" title="Ⅰ复制ruby脚本至安装路径"></a>Ⅰ复制ruby脚本至安装路径</h4><blockquote>
+<p>cp /root/redis-3.0.6/src/redis-trib.rb /usr/local/redis/bin</p>
+</blockquote>
+<h4 id="Ⅱ创建集群"><a href="#Ⅱ创建集群" class="headerlink" title="Ⅱ创建集群"></a>Ⅱ创建集群</h4><blockquote>
+<p>/usr/local/redis/bin/redis-trib.rb create –replicas 1 192.168.152.12:6379 192.168.152.12:6380 192.168.152.12:6381 192.168.152.12:6382 192.168.152.12:6383 192.168.152.12:6384</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2015/10/22/redis集群/6.png" alt="创建集群"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装成功<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2015/10/22/redis集群/7.png" alt="集群安装成功"></p>
+<h3 id="4-检测集群、测试"><a href="#4-检测集群、测试" class="headerlink" title="4.检测集群、测试"></a>4.检测集群、测试</h3><h4 id="Ⅰ检测集群"><a href="#Ⅰ检测集群" class="headerlink" title="Ⅰ检测集群"></a>Ⅰ检测集群</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2015/10/22/redis集群/8.png" alt="检测集群"></p>
+<h4 id="Ⅱ测试集群"><a href="#Ⅱ测试集群" class="headerlink" title="Ⅱ测试集群"></a>Ⅱ测试集群</h4><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2015/10/22/redis集群/9.png" alt="测试集群"></p>
+
       
     </div>
     
@@ -426,7 +463,7 @@
         
   
   <div class="tags">
-    <a href="/tags/java编程/">java编程</a>
+    <a href="/tags/集群/">集群</a>
   </div>
 
         <!-- partial('post/share') -->
@@ -445,20 +482,38 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-09-08T05:44:16.000Z"><a href="/2015/09/08/如果需要精确的答案，请避免使用float和double/">2015-09-08</a></time>
+        <time datetime="2015-10-20T12:37:24.000Z"><a href="/2015/10/20/redis学习/">2015-10-20</a></time>
       
       
   
-    <h1 class="title"><a href="/2015/09/08/如果需要精确的答案，请避免使用float和double/">如果需要精确的答案，请避免使用float和double</a></h1>
+    <h1 class="title"><a href="/2015/10/20/redis学习/">redis学习</a></h1>
   
 
     </header>
     <div class="entry">
       
-        <h2 id="double和float的初衷"><a href="#double和float的初衷" class="headerlink" title="double和float的初衷"></a>double和float的初衷</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float和double类型主要是为了科学计算和工程而设计的,它们执行二进制浮点运算,这是为了在广泛的数值计算上提供较为精确的快速近似运算而设计的.然而它们并没有提供完全精确的结果,所以不应该用于需要精确结果的场合,尤其是货币计算,因为要让float和double类型精确地表示0.1是不可能的.</p>
-<h2 id="what-should-we-do"><a href="#what-should-we-do" class="headerlink" title="what should we do?"></a>what should we do?</h2><blockquote>
-<p>1.为了解决这一问题,需要使用BigDecimal,int或者long进行货币运算<br>2.使用BigDecimal:与基本运算类型相比,这样做很不方便,而且很慢.但是使用它可以按照法定要求的舍入行为进行业务计算.<br>3.除了BigDecimal之外,还有一种办法就是使用int和long,如果数值没超过9位十进制数字,可以使用int,如果不超过18位数字,可以使用long,如果数值超过18位,就必须使用BigDecimal</p>
+        <h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><h3 id="1-redis是什么"><a href="#1-redis是什么" class="headerlink" title="1.redis是什么"></a>1.redis是什么</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;REmote Dictionary Server(Redis)是一个key-value存储系统，redis支持自动/手动持久化</p>
+<h3 id="2-redis的性能"><a href="#2-redis的性能" class="headerlink" title="2.redis的性能"></a>2.redis的性能</h3><blockquote>
+<p>测试完成了50个并发执行十万个数据请求；<br>设置和获取的值是一个256字节字符串；<br>结果：读的速度是11万次/s，写的速度是81000次/s</p>
 </blockquote>
+<h3 id="3-redis支持的数据类型"><a href="#3-redis支持的数据类型" class="headerlink" title="3.redis支持的数据类型"></a>3.redis支持的数据类型</h3><blockquote>
+<p>String、hash、list、set、sorted set</p>
+</blockquote>
+<h2 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h2><h3 id="1-安装依赖"><a href="#1-安装依赖" class="headerlink" title="1.安装依赖"></a>1.安装依赖</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc-c++ -y</span><br></pre></td></tr></table></figure>
+<h3 id="2-创建安装目录、编译、安装"><a href="#2-创建安装目录、编译、安装" class="headerlink" title="2.创建安装目录、编译、安装"></a>2.创建安装目录、编译、安装</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /usr/local/redis </span><br><span class="line">tar zxvf redis<span class="number">-3.0</span><span class="number">.6</span>.tar.gz</span><br><span class="line">cd redis<span class="number">-3.0</span><span class="number">.6</span></span><br><span class="line">make </span><br><span class="line">make PREFIX=<span class="regexp">/usr/</span>local/redis install</span><br></pre></td></tr></table></figure>
+<h3 id="3-复制配置文件、启动"><a href="#3-复制配置文件、启动" class="headerlink" title="3.复制配置文件、启动"></a>3.复制配置文件、启动</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /root/redis<span class="number">-3.0</span><span class="number">.6</span></span><br><span class="line">cp redis.conf /usr/local/redis/bin</span><br></pre></td></tr></table></figure>
+<p>修改/usr/local/redis/bin/redis.conf<br><img src="/2015/10/20/redis学习/1.png" alt="修改redis配置文件"><br>修改实例数量（安装完成后，默认是16）<br><img src="/2015/10/20/redis学习/2.png" alt="修改实例数量"><br>启动命令<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/redis/bin/redis-server /usr/local/redis/bin/redis.conf</span><br></pre></td></tr></table></figure></p>
+<p>查看进程<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep redis</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-打开redisClient，测试连接"><a href="#4-打开redisClient，测试连接" class="headerlink" title="4.打开redisClient，测试连接"></a>4.打开redisClient，测试连接</h3><h2 id="三、java客户端对redis的常用操作"><a href="#三、java客户端对redis的常用操作" class="headerlink" title="三、java客户端对redis的常用操作"></a>三、java客户端对redis的常用操作</h2><h3 id="1-添加依赖"><a href="#1-添加依赖" class="headerlink" title="1.添加依赖"></a>1.添加依赖</h3><p><img src="/2015/10/20/redis学习/3.png" alt="添加redis依赖"></p>
+<h3 id="2-操作String"><a href="#2-操作String" class="headerlink" title="2.操作String"></a>2.操作String</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 操作string</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">@Test</span><br><span class="line">public <span class="keyword">void</span> operStr() &#123;</span><br><span class="line">	<span class="comment">//添加一条数据</span></span><br><span class="line">	jedis.set(<span class="string">"username"</span>,<span class="string">"jinping"</span>);</span><br><span class="line">	<span class="comment">//获取一条数据</span></span><br><span class="line">	<span class="built_in">String</span> username = jedis.get(<span class="string">"username"</span>);</span><br><span class="line">	System.out.println(<span class="string">"用户名："</span>+username);</span><br><span class="line">	<span class="comment">//添加多条数据 参数为奇数为key 偶数为value</span></span><br><span class="line">	jedis.mset(<span class="string">"age"</span>,<span class="string">"18"</span>,<span class="string">"address"</span>,<span class="string">"beijing"</span>);</span><br><span class="line">	<span class="comment">//获取多条数据</span></span><br><span class="line">	List&lt;<span class="built_in">String</span>&gt; strList = jedis.mget(<span class="string">"username"</span>,<span class="string">"age"</span>,<span class="string">"address"</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="built_in">String</span> str:strList) &#123;</span><br><span class="line">		System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//删除</span></span><br><span class="line">	jedis.del(<span class="string">"username"</span>,<span class="string">"age"</span>,<span class="string">"address"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-操作hash"><a href="#3-操作hash" class="headerlink" title="3.操作hash"></a>3.操作hash</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 操作hash</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">@Test</span><br><span class="line">public <span class="keyword">void</span> operHash() &#123;</span><br><span class="line">	<span class="comment">//添加一条</span></span><br><span class="line">	jedis.hset(<span class="string">"goodsInfo"</span>,<span class="string">"goodsName"</span>,<span class="string">"403-超级笔记本"</span>);</span><br><span class="line">	<span class="comment">//获取一条</span></span><br><span class="line">	<span class="built_in">String</span> goodsName = jedis.hget(<span class="string">"goodsInfo"</span>, <span class="string">"goodsName"</span>);</span><br><span class="line">	System.out.println(<span class="string">"商品名称："</span>+goodsName);</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">Map</span>&lt;<span class="built_in">String</span>,<span class="built_in">String</span>&gt; hash = <span class="keyword">new</span> HashMap&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt;();</span><br><span class="line">	hash.put(<span class="string">"orderSn"</span>,<span class="string">"2017122610160001"</span>);</span><br><span class="line">	hash.put(<span class="string">"orderStatus"</span>,<span class="string">"提交预订单"</span>);</span><br><span class="line">	<span class="comment">//添加多条</span></span><br><span class="line">	jedis.hmset(<span class="string">"orderInfo"</span>, hash);</span><br><span class="line">	System.out.println(<span class="string">"-------------------------------"</span>);</span><br><span class="line">	<span class="comment">//获取多条</span></span><br><span class="line">	List&lt;<span class="built_in">String</span>&gt; strList = jedis.hmget(<span class="string">"orderInfo"</span>, <span class="string">"orderSn"</span>,<span class="string">"orderStatus"</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="built_in">String</span> str:strList) &#123;</span><br><span class="line">		System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line">	System.out.println(<span class="string">"-------------------------------"</span>);</span><br><span class="line">	<span class="comment">//获取全部</span></span><br><span class="line">	<span class="built_in">Map</span>&lt;<span class="built_in">String</span>, <span class="built_in">String</span>&gt;  orderInfoMap = jedis.hgetAll(<span class="string">"orderInfo"</span>);</span><br><span class="line">	<span class="keyword">for</span>(Entry&lt;<span class="built_in">String</span>,<span class="built_in">String</span>&gt; entry:orderInfoMap.entrySet()) &#123;</span><br><span class="line">		System.out.println(entry.getKey()+<span class="string">":"</span>+entry.getValue());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//删除</span></span><br><span class="line">	jedis.hdel(<span class="string">"orderInfo"</span>, <span class="string">"orderStatus"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-操作list"><a href="#4-操作list" class="headerlink" title="4.操作list"></a>4.操作list</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 操作list</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">@Test</span><br><span class="line">public <span class="keyword">void</span> operList() &#123;</span><br><span class="line">	<span class="comment">//添加</span></span><br><span class="line"><span class="comment">//		for(int i=0;i&lt;10;i++) &#123;</span></span><br><span class="line"><span class="comment">//			jedis.lpush("animals","dog"+i,"cat"+i,"fish"+i);</span></span><br><span class="line"><span class="comment">//		&#125;</span></span><br><span class="line">	<span class="comment">//获取</span></span><br><span class="line"><span class="comment">//		String res = jedis.rpop("animals");</span></span><br><span class="line"><span class="comment">//		System.out.println(res);</span></span><br><span class="line">	<span class="comment">//分页查询 start:起始条数  end:结束条数</span></span><br><span class="line">	List&lt;<span class="built_in">String</span>&gt; strList = jedis.lrange(<span class="string">"animals"</span>, <span class="number">0</span>,<span class="number">9</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="built_in">String</span> str:strList) &#123;</span><br><span class="line">		System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//获取总条数</span></span><br><span class="line">	Long total = jedis.llen(<span class="string">"animals"</span>);</span><br><span class="line">	System.out.println(<span class="string">"总条数："</span>+total);</span><br><span class="line">	<span class="comment">//删除</span></span><br><span class="line">	jedis.lrem(<span class="string">"animals"</span>, <span class="number">1</span>, <span class="string">"dog0"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="5-操作set"><a href="#5-操作set" class="headerlink" title="5.操作set"></a>5.操作set</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 操作set</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">@Test</span><br><span class="line">public <span class="keyword">void</span> operSet() &#123;</span><br><span class="line">	<span class="comment">//添加</span></span><br><span class="line"><span class="comment">//		jedis.sadd("members","xiaoming","xiaopeng","xiaohei");</span></span><br><span class="line">	<span class="comment">//获取</span></span><br><span class="line">	<span class="built_in">Set</span>&lt;<span class="built_in">String</span>&gt; members = jedis.smembers(<span class="string">"members"</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="built_in">String</span> member:members) &#123;</span><br><span class="line">		System.out.println(member);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//删除</span></span><br><span class="line">	jedis.srem(<span class="string">"members"</span>, <span class="string">"xiaopeng"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="6-操作sorted-set"><a href="#6-操作sorted-set" class="headerlink" title="6.操作sorted set"></a>6.操作sorted set</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 操作sorted set-自动排序</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">@Test</span><br><span class="line">public <span class="keyword">void</span> operSortedSet() &#123;</span><br><span class="line">	<span class="built_in">Map</span>&lt;<span class="built_in">String</span>,Double&gt; scoreMembers = <span class="keyword">new</span> HashMap&lt;<span class="built_in">String</span>, Double&gt;();</span><br><span class="line">	scoreMembers.put(<span class="string">"小明"</span>,<span class="number">98</span>D);</span><br><span class="line">	scoreMembers.put(<span class="string">"小鹏"</span>,<span class="number">97</span>D);</span><br><span class="line">	scoreMembers.put(<span class="string">"小黑"</span>,<span class="number">99</span>D);</span><br><span class="line">	<span class="comment">//添加</span></span><br><span class="line"><span class="comment">//		jedis.zadd("score", scoreMembers);</span></span><br><span class="line">	<span class="comment">//获取 start:起始条数  end:结束条数 按分数升序查询</span></span><br><span class="line">	<span class="built_in">Set</span>&lt;<span class="built_in">String</span>&gt; strSet = jedis.zrange(<span class="string">"score"</span>, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="built_in">String</span> str:strSet) &#123;</span><br><span class="line">		System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line">	System.out.println(<span class="string">"-----------------------------"</span>);</span><br><span class="line">	<span class="comment">//获取 start:起始条数  end:结束条数 按分数降序查询</span></span><br><span class="line">	<span class="built_in">Set</span>&lt;<span class="built_in">String</span>&gt; strSet2 = jedis.zrevrange(<span class="string">"score"</span>, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(<span class="built_in">String</span> str:strSet2) &#123;</span><br><span class="line">		System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line">	System.out.println(<span class="string">"-----------------------------"</span>);</span><br><span class="line">	<span class="comment">//获取 start:起始条数  end:结束条数 按分数降序查询 同时获取成员分数</span></span><br><span class="line">	<span class="built_in">Set</span>&lt;Tuple&gt; tupleSet = jedis.zrevrangeWithScores(<span class="string">"score"</span>, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">for</span>(Tuple tuple:tupleSet) &#123;</span><br><span class="line">		<span class="comment">//成员</span></span><br><span class="line">		<span class="built_in">String</span> element = tuple.getElement();</span><br><span class="line">		<span class="comment">//分数</span></span><br><span class="line">		Double score = tuple.getScore();</span><br><span class="line">		System.out.println(element+<span class="string">":"</span>+score);</span><br><span class="line">	&#125;</span><br><span class="line">	System.out.println(<span class="string">"-----------------------------"</span>);</span><br><span class="line">	<span class="comment">//获取总条数</span></span><br><span class="line">	Long total = jedis.zcard(<span class="string">"score"</span>);</span><br><span class="line">	System.out.println(<span class="string">"总条数："</span>+total);</span><br><span class="line">	<span class="comment">//删除</span></span><br><span class="line">	jedis.zrem(<span class="string">"score"</span>, <span class="string">"小鹏"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="四、redis-cli常用命令、自动备份机制"><a href="#四、redis-cli常用命令、自动备份机制" class="headerlink" title="四、redis-cli常用命令、自动备份机制"></a>四、redis-cli常用命令、自动备份机制</h2><h3 id="1-redis-cli常用命令"><a href="#1-redis-cli常用命令" class="headerlink" title="1.redis-cli常用命令"></a>1.redis-cli常用命令</h3><p>①参数：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-h(host):用于指定连接地址<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-p(port):用于指定端口号<br>②常用操作：<br><img src="/2015/10/20/redis学习/4.png" alt="常用操作1"><br><img src="/2015/10/20/redis学习/5.png" alt="常用操作2"></p>
+<h3 id="2-自动备份机制"><a href="#2-自动备份机制" class="headerlink" title="2.自动备份机制"></a>2.自动备份机制</h3><p>①手动持久化<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;save:将数据持久化至磁盘，不再接收其他数据请求<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;bgsave:将数据持久化至磁盘，另起线程，执行保存操作，依然可以接收其他数据请求</p>
+<p>②自动持久化<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ⅰrdb<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2015/10/20/redis学习/6.png" alt="rdb1"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在900秒内有1个key发生变化<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在300秒内有10个key发生变化<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在60秒内有10000个key发生变化<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2015/10/20/redis学习/7.png" alt="rdb1"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ⅱaof<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保存操作的命令，默认为未打开，在此处设置为打开<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2015/10/20/redis学习/8.png" alt="aof1"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/2015/10/20/redis学习/9.png" alt="aof2"></p>
+<p>建议：关闭redis之前，手动持久化save或者bgsave</p>
 
       
     </div>
@@ -472,7 +527,7 @@
         
   
   <div class="tags">
-    <a href="/tags/java编程/">java编程</a>
+    <a href="/tags/集群/">集群</a>
   </div>
 
         <!-- partial('post/share') -->
@@ -489,7 +544,7 @@
 <nav id="pagination">
   
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Nächste Seite &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </nav>
@@ -497,7 +552,7 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="search" name="q" results="0" placeholder="Search">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
@@ -506,7 +561,7 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Neueste Artikel</h3>
+  <h3 class="title">Recent Posts</h3>
   <ul class="entry">
     
       <li>
@@ -526,7 +581,7 @@
       </li>
     
       <li>
-        <a href="/2015/10/20/redis学习/">redis学习</a>
+        <a href="/2015/11/01/dubbo-一/">dubbo(一)</a>
       </li>
     
   </ul>
@@ -550,7 +605,7 @@
   
     <li><a href="/tags/设计模式/">设计模式</a><small>2</small></li>
   
-    <li><a href="/tags/集群/">集群</a><small>1</small></li>
+    <li><a href="/tags/集群/">集群</a><small>4</small></li>
   
   </ul>
 </div>
@@ -558,9 +613,9 @@
 
   
 <div class="widget tagcloud">
-  <h3 class="title">Tag-Cloud</h3>
+  <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 17.5px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 15px;">java编程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a> <a href="/tags/集群/" style="font-size: 10px;">集群</a>
+    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 17.5px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 15px;">java编程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a> <a href="/tags/集群/" style="font-size: 17.5px;">集群</a>
   </div>
 </div>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>Seite 2 | 靳平の博客</title>
+  <title>Page 2 | 靳平の博客</title>
   <meta name="author" content="jinping Tinner" />
 
   
@@ -56,6 +56,143 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-10-09T03:14:29.000Z"><a href="/2015/10/09/数据库事务的四种属性/">2015-10-09</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/10/09/数据库事务的四种属性/">数据库事务的四种属性</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据库事务的属性包括四大类，即ACID，这四个英文单词是Atomicity(原子性)、Consistency(一致性)、Isolation(隔离性)、Durability(持久性)。</p>
+<blockquote>
+<p>1.<strong>原子性</strong>：数据库系统保证事务的所有操作要么同时成功，要么同时失败；<br>  2.<strong>一致性</strong>：事务必须确保在开始和结束时，数据库处于正确和一致的状态。例如：没有破坏参照完整性约束；<br>  3.<strong>隔离性</strong>：一个事务对数据库的所有改动都与其他查询和事务隔离，直到事务提交；<br>  4.<strong>持久性</strong>： 一旦提交，事务所做的改动就是持久的。数据库系统必须有某种方式从崩溃和其他问题中恢复，确保数据库当前的状态不会丢失</p>
+</blockquote>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/数据库/">数据库</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-09-12T11:35:25.000Z"><a href="/2015/09/12/当心字符串连接的性能/">2015-09-12</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/09/12/当心字符串连接的性能/">当心字符串连接的性能</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    字符串连接操作符(+)是把多个字符串合并为一个字符串的便利途径,但是它不适合运用在大规模的场景中.为连接n个字符串而重复地使用字符串连接操作符,需要n的平方级的时间,当两个字符串连接的时候,它们的内容都要拷贝</p>
+</blockquote>
+<h4 id="为了获得可以接受的性能-可以使用StringBuilder替代String-节省时间"><a href="#为了获得可以接受的性能-可以使用StringBuilder替代String-节省时间" class="headerlink" title="为了获得可以接受的性能,可以使用StringBuilder替代String,节省时间."></a>为了获得可以接受的性能,可以使用StringBuilder替代String,节省时间.</h4><h4 id="另一种方法是-使用字符数组-或者每次只处理一个字符串-而不是将它们组合起来"><a href="#另一种方法是-使用字符数组-或者每次只处理一个字符串-而不是将它们组合起来" class="headerlink" title="另一种方法是:使用字符数组,或者每次只处理一个字符串,而不是将它们组合起来."></a>另一种方法是:使用字符数组,或者每次只处理一个字符串,而不是将它们组合起来.</h4>
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java编程/">java编程</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-09-08T05:44:16.000Z"><a href="/2015/09/08/如果需要精确的答案，请避免使用float和double/">2015-09-08</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/09/08/如果需要精确的答案，请避免使用float和double/">如果需要精确的答案，请避免使用float和double</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="double和float的初衷"><a href="#double和float的初衷" class="headerlink" title="double和float的初衷"></a>double和float的初衷</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float和double类型主要是为了科学计算和工程而设计的,它们执行二进制浮点运算,这是为了在广泛的数值计算上提供较为精确的快速近似运算而设计的.然而它们并没有提供完全精确的结果,所以不应该用于需要精确结果的场合,尤其是货币计算,因为要让float和double类型精确地表示0.1是不可能的.</p>
+<h2 id="what-should-we-do"><a href="#what-should-we-do" class="headerlink" title="what should we do?"></a>what should we do?</h2><blockquote>
+<p>1.为了解决这一问题,需要使用BigDecimal,int或者long进行货币运算<br>2.使用BigDecimal:与基本运算类型相比,这样做很不方便,而且很慢.但是使用它可以按照法定要求的舍入行为进行业务计算.<br>3.除了BigDecimal之外,还有一种办法就是使用int和long,如果数值没超过9位十进制数字,可以使用int,如果不超过18位数字,可以使用long,如果数值超过18位,就必须使用BigDecimal</p>
+</blockquote>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java编程/">java编程</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
   <article class="post">
   
   <div class="post-content">
@@ -303,140 +440,11 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-17T01:51:13.000Z"><a href="/2015/08/17/考虑实现Comparable/">2015-08-17</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/08/17/考虑实现Comparable/">考虑实现Comparable</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>compareTo是comparable接口中唯一的方法。<br>与equals方法不同的是，在跨越不同的类的时候，compareTo可以不做比较：如果两个被比较的对象引用不用类的对象，那么它可以抛出ClassCastException异常。<br>依赖于比较关系的类包括有序集合类TreeSet和TreeMap,以及工具类Collection和Arrays，他们内部都包含有搜索和排序算法。<br>告诫：无法在用新的值组建扩展可实例化的类时，同时保持compareTo约定，除非放弃面向对象的抽象优势。<br>另外就是compareTo方法中是不需要转换类型，因为它是进行排序的，而不是进行等同行的比较，所以不需要进行转换类型的，也不需要进行类型判断。<br>还有就是有多个关键域，那么就需要按照最关键的域开始进行比较，若相同，则依次向下比较，这样的结果才可能是希望看到的结果。</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/java优化/">java优化</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-11T19:51:32.000Z"><a href="/2015/08/12/始终要覆盖toString/">2015-08-12</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/08/12/始终要覆盖toString/">始终要覆盖toString</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>建议所有的类都覆盖这个方法。在实际应用中，toString方法应该返回对象中包含的所有值得关注的信息。<br>在实现toString方法的时候，必须做出一个很重要的决定：是否在文档中指定返回值的格式。如果指定了格式，最好再提供一个相匹配的静态工厂或者构造器，以便程序员可以很容易地在对象和它的字符串之间来回转换。<br>但是无论是否决定指定格式，都应该在编码中添加文档注释指明自己的意图。都应该提供一种编程式的访问途径</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/java优化/">java优化</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-09T05:45:41.000Z"><a href="/2015/08/09/消除非受检警告/">2015-08-09</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/08/09/消除非受检警告/">消除非受检警告</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>当泛型编程时，会遇到很多编译器警告：非受检强制转化警告、非受检方法调用警告、非受检普通数组创建警告、非受检转换警告<br>要尽可能消除每一个非受检警告。<br>如果无法消除警告，同时可以证明引起警告的代码是类型安全的，可以用一个@SuppressWarnings(“unchecked”)注解来禁止这条警告，可以用任何粒度的级别中，但是应该始终在尽可能小的范围中使用SuppressWarnings注解，永远不要在整个类中使用SuppressWarnings，可能会掩盖了重要的警告。<br>其次，将SuppressWarnings放在return语句中是非法的，应该声明一个局部变量来保存返回值，并注解其声明。</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/java注意事项/">java注意事项</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; Vorherige Seite</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Nächste Seite &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </nav>
@@ -444,7 +452,7 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="search" name="q" results="0" placeholder="Search">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
@@ -453,7 +461,7 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Neueste Artikel</h3>
+  <h3 class="title">Recent Posts</h3>
   <ul class="entry">
     
       <li>
@@ -473,7 +481,7 @@
       </li>
     
       <li>
-        <a href="/2015/10/20/redis学习/">redis学习</a>
+        <a href="/2015/11/01/dubbo-一/">dubbo(一)</a>
       </li>
     
   </ul>
@@ -497,7 +505,7 @@
   
     <li><a href="/tags/设计模式/">设计模式</a><small>2</small></li>
   
-    <li><a href="/tags/集群/">集群</a><small>1</small></li>
+    <li><a href="/tags/集群/">集群</a><small>4</small></li>
   
   </ul>
 </div>
@@ -505,9 +513,9 @@
 
   
 <div class="widget tagcloud">
-  <h3 class="title">Tag-Cloud</h3>
+  <h3 class="title">Tag Cloud</h3>
   <div class="entry">
-    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 17.5px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 15px;">java编程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a> <a href="/tags/集群/" style="font-size: 10px;">集群</a>
+    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 17.5px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 15px;">java编程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a> <a href="/tags/集群/" style="font-size: 17.5px;">集群</a>
   </div>
 </div>
 
