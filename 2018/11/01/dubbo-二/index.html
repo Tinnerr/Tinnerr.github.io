@@ -1,0 +1,211 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>dubbo(二) | 靳平の博客</title>
+  <meta name="author" content="jinping Tinner" />
+
+  
+  <meta name="description" content="一、dubbo的负载均衡策略1.随机（random）&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;随机选取一台服务器去运行&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;不足：数量比较少的时候，负载均衡的效果不是很明显
+2.轮询（roundrobin" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="dubbo(二)" />
+  <meta property="og:site_name" content="靳平の博客" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="靳平の博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">靳平の博客</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">我的主页</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2018-11-01T10:10:56.000Z"><a href="/2018/11/01/dubbo-二/">2018-11-01</a></time>
+      
+      
+  
+    <h1 class="title">dubbo(二)</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="一、dubbo的负载均衡策略"><a href="#一、dubbo的负载均衡策略" class="headerlink" title="一、dubbo的负载均衡策略"></a>一、dubbo的负载均衡策略</h2><h3 id="1-随机（random）"><a href="#1-随机（random）" class="headerlink" title="1.随机（random）"></a>1.随机（random）</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;随机选取一台服务器去运行<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不足：数量比较少的时候，负载均衡的效果不是很明显</p>
+<h3 id="2-轮询（roundrobin）"><a href="#2-轮询（roundrobin）" class="headerlink" title="2.轮询（roundrobin）"></a>2.轮询（roundrobin）</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一次调用第一台，第二次调用第二台服务器，以此类推<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不足：假设有十台服务器其中第二台响应特别慢，调用的时候不会立即结束，当下一个服务进来的时候，上一个服务没有立即结束，服务器就不会认为是一个完整的服务，所以下一个服务就会停留在第二台服务器上去进行响应，由于第二台服务器响应依旧很慢，以此类推越积越多，都聚集到这个比较慢的服务器上去了。非常拥挤。</p>
+<h3 id="3-最小活跃数原则（leastactive）"><a href="#3-最小活跃数原则（leastactive）" class="headerlink" title="3.最小活跃数原则（leastactive）"></a>3.最小活跃数原则（leastactive）</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;哪台服务器调用的最少，就去调用哪台服务器<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相对来说比较合理</p>
+<h3 id="4-一致性hash原则（consistenthash）"><a href="#4-一致性hash原则（consistenthash）" class="headerlink" title="4.一致性hash原则（consistenthash）"></a>4.一致性hash原则（consistenthash）</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同一个客户端始终调用同一台服务器</p>
+<h2 id="二、如何指定负载均衡策略？"><a href="#二、如何指定负载均衡策略？" class="headerlink" title="二、如何指定负载均衡策略？"></a>二、如何指定负载均衡策略？</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在实际应用中，默认是随机random的。指定的时候，在消费者一端，consumer.xml的配置文件中，dubbo:reference  中有一个属性（loadbalance），指定想要遵循的负载均衡策略<br><img src="/2018/11/01/dubbo-二/1.png" alt="指定负载均衡"><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>注意：</strong>如果在服务端设置了负载均衡，客户端没有设置，则默认走服务端的设置；如果同时设置了负载均衡，则走客户端的负载均衡。</p>
+<h2 id="二、dubbo的注解"><a href="#二、dubbo的注解" class="headerlink" title="二、dubbo的注解"></a>二、dubbo的注解</h2><h3 id="1-开启注解"><a href="#1-开启注解" class="headerlink" title="1.开启注解"></a>1.开启注解</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在xml配置文件中，有一个<dubbo:annotation>的节点，在此节点中有一个package属性，用以指定开启注解的服务的类所在的包。<br><img src="/2018/11/01/dubbo-二/2.png" alt="开启注解"></dubbo:annotation></p>
+<h3 id="2-服务端：在对应的包下的java文件中类前写注解-service"><a href="#2-服务端：在对应的包下的java文件中类前写注解-service" class="headerlink" title="2.服务端：在对应的包下的java文件中类前写注解@service"></a>2.服务端：在对应的包下的java文件中类前写注解@service</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>注意：</strong>是引入的dubbo的service而不是spring的。</p>
+<h3 id="3-客户端使用注解"><a href="#3-客户端使用注解" class="headerlink" title="3.客户端使用注解"></a>3.客户端使用注解</h3><h4 id="1-在pom-xml中添加junit依赖和spring-test"><a href="#1-在pom-xml中添加junit依赖和spring-test" class="headerlink" title="1.在pom.xml中添加junit依赖和spring-test"></a>1.在pom.xml中添加junit依赖和spring-test</h4><p><img src="/2018/11/01/dubbo-二/3.png" alt="开启注解"></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/dubbo/">dubbo</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Neueste Artikel</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/11/01/dubbo-二/">dubbo(二)</a>
+      </li>
+    
+      <li>
+        <a href="/2018/09/16/基本类型优于装箱基本类型/">基本类型优于装箱基本类型</a>
+      </li>
+    
+      <li>
+        <a href="/2018/02/03/String常用方法总结/">String常用方法总结</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/工厂模式/">工厂方法模式</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/工厂方法模式/">工厂方法模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/String/">String</a><small>1</small></li>
+  
+    <li><a href="/tags/dubbo/">dubbo</a><small>5</small></li>
+  
+    <li><a href="/tags/java优化/">java优化</a><small>6</small></li>
+  
+    <li><a href="/tags/java注意事项/">java注意事项</a><small>4</small></li>
+  
+    <li><a href="/tags/java编程/">java编程</a><small>3</small></li>
+  
+    <li><a href="/tags/数据库/">数据库</a><small>1</small></li>
+  
+    <li><a href="/tags/设计模式/">设计模式</a><small>2</small></li>
+  
+    <li><a href="/tags/集群/">集群</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag-Cloud</h3>
+  <div class="entry">
+    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/dubbo/" style="font-size: 18px;">dubbo</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 16px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 14px;">java编程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a> <a href="/tags/集群/" style="font-size: 12px;">集群</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2018 jinping Tinner
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

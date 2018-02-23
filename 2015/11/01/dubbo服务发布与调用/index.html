@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>dubbo服务发布与调用 | 靳平の博客</title>
+  <meta name="author" content="jinping Tinner" />
+
+  
+  <meta name="description" content="一、项目结构&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;dubbo-service:用于添加java接口-interface&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;dubbo-provider：用于添加java接口实" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="dubbo服务发布与调用" />
+  <meta property="og:site_name" content="靳平の博客" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="靳平の博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">靳平の博客</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">我的主页</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-11-01T08:59:44.000Z"><a href="/2015/11/01/dubbo服务发布与调用/">2015-11-01</a></time>
+      
+      
+  
+    <h1 class="title">dubbo服务发布与调用</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="一、项目结构"><a href="#一、项目结构" class="headerlink" title="一、项目结构"></a>一、项目结构</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dubbo-service:用于添加java接口-interface<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dubbo-provider：用于添加java接口实现类，并且发布服务。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dubo-consumer：用于消费服务，即服务的调用。</p>
+<h2 id="二、服务发布"><a href="#二、服务发布" class="headerlink" title="二、服务发布"></a>二、服务发布</h2><h3 id="1-创建dubbo-service"><a href="#1-创建dubbo-service" class="headerlink" title="1.创建dubbo-service"></a>1.创建dubbo-service</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pom.xml<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">	&lt;dependency&gt;</span><br><span class="line">		&lt;groupId&gt;com.alibaba&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">		&lt;artifactId&gt;dubbo&lt;/</span>artifactId&gt;</span><br><span class="line">		&lt;version&gt;<span class="number">2.5</span><span class="number">.8</span>&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>dependency&gt;</span><br><span class="line">	&lt;dependency&gt;</span><br><span class="line">		&lt;groupId&gt;org.apache.zookeeper&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">		&lt;artifactId&gt;zookeeper&lt;/</span>artifactId&gt;</span><br><span class="line">		&lt;version&gt;<span class="number">3.4</span><span class="number">.10</span>&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>dependency&gt;</span><br><span class="line">	&lt;dependency&gt;</span><br><span class="line">		&lt;groupId&gt;com<span class="number">.101</span>tec&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">		&lt;artifactId&gt;zkclient&lt;/</span>artifactId&gt;</span><br><span class="line">		&lt;version&gt;<span class="number">0.10</span>&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>dependency&gt;</span><br><span class="line">&lt;<span class="regexp">/dependencies&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;demoService.java<br><img src="/2015/11/01/dubbo服务发布与调用/1.png" alt="服务发布"></p>
+<h2 id="三、服务提供"><a href="#三、服务提供" class="headerlink" title="三、服务提供"></a>三、服务提供</h2><h3 id="1-创建dubbop-provider"><a href="#1-创建dubbop-provider" class="headerlink" title="1.创建dubbop-provider"></a>1.创建dubbop-provider</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pom.xml<br><img src="/2015/11/01/dubbo服务发布与调用/2.png" alt="服务提供"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;demoServiceImpl.java<br><img src="/2015/11/01/dubbo服务发布与调用/3.png" alt="服务提供2"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dubbo-provider.xml<br><img src="/2015/11/01/dubbo服务发布与调用/4.png" alt="服务提供3"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编写main方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class Provider &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) throws IOException &#123;</span><br><span class="line">		//1.读取配置文件，加载容器</span><br><span class="line">		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(&quot;dubbo-provider.xml&quot;);</span><br><span class="line">		//2.启动容器</span><br><span class="line">		context.start();</span><br><span class="line">		//3.输入任意字符停止程序</span><br><span class="line">		System.in.read();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="四、服务消费"><a href="#四、服务消费" class="headerlink" title="四、服务消费"></a>四、服务消费</h2><h3 id="1-创建dubbo-consumer项目"><a href="#1-创建dubbo-consumer项目" class="headerlink" title="1.创建dubbo-consumer项目"></a>1.创建dubbo-consumer项目</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pom.xml<br><img src="/2015/11/01/dubbo服务发布与调用/2.png" alt="服务消费"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dubbo-consumer.xml<br><img src="/2015/11/01/dubbo服务发布与调用/5.png" alt="服务消费"></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;consumer.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public class Consumer &#123;</span><br><span class="line"></span><br><span class="line">	public static void main(String[] args) &#123;</span><br><span class="line">		//1.读取配置文件，加载容器</span><br><span class="line">		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(&quot;dubbo-consumer.xml&quot;);</span><br><span class="line">		//2.获取bean对象</span><br><span class="line">		DemoService demoService = context.getBean(&quot;demoService&quot;, DemoService.class);</span><br><span class="line">		//3.调用方法</span><br><span class="line">		String helloStr = demoService.sayHello(&quot;sxt&quot;);</span><br><span class="line">		System.out.println(helloStr);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/dubbo/">dubbo</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Neueste Artikel</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/11/01/dubbo-二/">dubbo(二)</a>
+      </li>
+    
+      <li>
+        <a href="/2018/09/16/基本类型优于装箱基本类型/">基本类型优于装箱基本类型</a>
+      </li>
+    
+      <li>
+        <a href="/2018/02/03/String常用方法总结/">String常用方法总结</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/工厂模式/">工厂方法模式</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/工厂方法模式/">工厂方法模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/String/">String</a><small>1</small></li>
+  
+    <li><a href="/tags/dubbo/">dubbo</a><small>5</small></li>
+  
+    <li><a href="/tags/java优化/">java优化</a><small>6</small></li>
+  
+    <li><a href="/tags/java注意事项/">java注意事项</a><small>4</small></li>
+  
+    <li><a href="/tags/java编程/">java编程</a><small>3</small></li>
+  
+    <li><a href="/tags/数据库/">数据库</a><small>1</small></li>
+  
+    <li><a href="/tags/设计模式/">设计模式</a><small>2</small></li>
+  
+    <li><a href="/tags/集群/">集群</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag-Cloud</h3>
+  <div class="entry">
+    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/dubbo/" style="font-size: 18px;">dubbo</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 16px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 14px;">java编程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a> <a href="/tags/集群/" style="font-size: 12px;">集群</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2018 jinping Tinner
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

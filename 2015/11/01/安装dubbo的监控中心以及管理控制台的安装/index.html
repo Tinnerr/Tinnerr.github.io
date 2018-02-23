@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>安装dubbo的监控中心以及管理控制台的安装 | 靳平の博客</title>
+  <meta name="author" content="jinping Tinner" />
+
+  
+  <meta name="description" content="一、安装监控中心1.创建安装目录
+mkdir -p /usr/local/dubbo
+
+2.解压到指定目录
+tar zxvf dubbo-monitor-simple-2.5.3-assembly.tar.gz -C /usr/local/dubbo
+
+3.修改配置文件
+cd /usr/local/" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="安装dubbo的监控中心以及管理控制台的安装" />
+  <meta property="og:site_name" content="靳平の博客" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="靳平の博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">靳平の博客</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">我的主页</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-11-01T08:37:57.000Z"><a href="/2015/11/01/安装dubbo的监控中心以及管理控制台的安装/">2015-11-01</a></time>
+      
+      
+  
+    <h1 class="title">安装dubbo的监控中心以及管理控制台的安装</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="一、安装监控中心"><a href="#一、安装监控中心" class="headerlink" title="一、安装监控中心"></a>一、安装监控中心</h2><h3 id="1-创建安装目录"><a href="#1-创建安装目录" class="headerlink" title="1.创建安装目录"></a>1.创建安装目录</h3><blockquote>
+<p>mkdir -p /usr/local/dubbo</p>
+</blockquote>
+<h3 id="2-解压到指定目录"><a href="#2-解压到指定目录" class="headerlink" title="2.解压到指定目录"></a>2.解压到指定目录</h3><blockquote>
+<p>tar zxvf dubbo-monitor-simple-2.5.3-assembly.tar.gz -C /usr/local/dubbo</p>
+</blockquote>
+<h3 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3.修改配置文件"></a>3.修改配置文件</h3><blockquote>
+<p>cd /usr/local/dubbo/dubbo-monitor-simple-2.5.3/conf</p>
+</blockquote>
+<p><img src="/2015/11/01/安装dubbo的监控中心以及管理控制台的安装/1.png" alt="修改配置文件"></p>
+<h3 id="4-启动"><a href="#4-启动" class="headerlink" title="4.启动"></a>4.启动</h3><blockquote>
+<p>cd /usr/local/dubbo/dubbo-monitor-simple-2.5.3/bin/<br>./start.sh</p>
+</blockquote>
+<p><img src="/2015/11/01/安装dubbo的监控中心以及管理控制台的安装/2.png" alt="启动1"><br><img src="/2015/11/01/安装dubbo的监控中心以及管理控制台的安装/3.png" alt="启动2"></p>
+<h2 id="二、安装管理控制台"><a href="#二、安装管理控制台" class="headerlink" title="二、安装管理控制台"></a>二、安装管理控制台</h2><h3 id="1-解压tomcat、清空tomcat-webapps-ROOT目录下的文件"><a href="#1-解压tomcat、清空tomcat-webapps-ROOT目录下的文件" class="headerlink" title="1.解压tomcat、清空tomcat/webapps/ROOT目录下的文件"></a>1.解压tomcat、清空tomcat/webapps/ROOT目录下的文件</h3><blockquote>
+<p>tar zxvf apache-tomcat-7.0.68.tar.gz -C /usr/local/dubbo<br>rm /usr/local/dubbo/apache-tomcat-7.0.68/webapps/ROOT/* -rf</p>
+</blockquote>
+<h3 id="2-解压dubbo-admin-war至tomcat-webapps-ROOT目录"><a href="#2-解压dubbo-admin-war至tomcat-webapps-ROOT目录" class="headerlink" title="2.解压dubbo-admin.war至tomcat/webapps/ROOT目录"></a>2.解压dubbo-admin.war至tomcat/webapps/ROOT目录</h3><blockquote>
+<p>unzip dubbo-admin-2.5.4.war -d /usr/local/dubbo/apache-tomcat-7.0.68/webapps/ROOT</p>
+</blockquote>
+<h3 id="3-修改dubbo-properties文件"><a href="#3-修改dubbo-properties文件" class="headerlink" title="3.修改dubbo.properties文件"></a>3.修改dubbo.properties文件</h3><blockquote>
+<p>cd /usr/local/dubbo/apache-tomcat-7.0.68/webapps/ROOT/WEB-INF</p>
+</blockquote>
+<p><img src="/2015/11/01/安装dubbo的监控中心以及管理控制台的安装/4.png" alt="修改dubbo配置文件"></p>
+<h3 id="4-启动tomcat，访问"><a href="#4-启动tomcat，访问" class="headerlink" title="4.启动tomcat，访问"></a>4.启动tomcat，访问</h3><blockquote>
+<p>cd /usr/local/dubbo/apache-tomcat-7.0.68/bin/startup.sh</p>
+</blockquote>
+<p><img src="/2015/11/01/安装dubbo的监控中心以及管理控制台的安装/5.png" alt="访问控制台"></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/dubbo/">dubbo</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Neueste Artikel</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2018/11/01/dubbo-二/">dubbo(二)</a>
+      </li>
+    
+      <li>
+        <a href="/2018/09/16/基本类型优于装箱基本类型/">基本类型优于装箱基本类型</a>
+      </li>
+    
+      <li>
+        <a href="/2018/02/03/String常用方法总结/">String常用方法总结</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/工厂模式/">工厂方法模式</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/工厂方法模式/">工厂方法模式</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/String/">String</a><small>1</small></li>
+  
+    <li><a href="/tags/dubbo/">dubbo</a><small>5</small></li>
+  
+    <li><a href="/tags/java优化/">java优化</a><small>6</small></li>
+  
+    <li><a href="/tags/java注意事项/">java注意事项</a><small>4</small></li>
+  
+    <li><a href="/tags/java编程/">java编程</a><small>3</small></li>
+  
+    <li><a href="/tags/数据库/">数据库</a><small>1</small></li>
+  
+    <li><a href="/tags/设计模式/">设计模式</a><small>2</small></li>
+  
+    <li><a href="/tags/集群/">集群</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag-Cloud</h3>
+  <div class="entry">
+    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/dubbo/" style="font-size: 18px;">dubbo</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 16px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 14px;">java编程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a> <a href="/tags/集群/" style="font-size: 12px;">集群</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2018 jinping Tinner
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

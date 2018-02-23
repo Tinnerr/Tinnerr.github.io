@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>Page 3 | 靳平の博客</title>
+  <title>Seite 3 | 靳平の博客</title>
   <meta name="author" content="jinping Tinner" />
 
   
@@ -56,6 +56,155 @@
 <div class="clearfix"></div></header>
   <div id="content" class="inner">
     <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-09-02T08:59:44.000Z"><a href="/2015/09/02/优先考虑泛型方法/">2015-09-02</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/09/02/优先考虑泛型方法/">优先考虑泛型方法</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>泛型方法的一个显著特征是：无需明确指定类型参数的值，不像调用泛型构造器的时候是必须指定的。<br>类型限制&lt;T extends Comparable<t>&gt;可以读作：“针对可以与自身进行比较的每个类型T ”<br>泛型方法还有一个比较重要的概念叫做类型推导。<br>在创建一个泛型集合实例时，这样写    Map<string ,="" integer="">   map  =  new  HashMap<string ,="" integer="">();<br>我们在调用泛型HashMap的构造器时，在new HashMap之后使用<string ,="" integer="">指明了类型参数。那么我们在使用泛型方法的时候是否也需要这样做呢？<br>写出这样的代码 ：Set.union<string>(s1,s2);   也就是说是否在需要调用方法的时候像调用构造器的那样在方法名后面指明类型参数。<br>泛型方法会根据具体传入的s1,s2的类型，来推断出类型参数E。如果传入的s1,s2是HashSet<string>，那么类型参数E就是String；<br>如果传入的s1,s2是HashSet<integer>，那么类型参数E就是Integer。<br>一句话就是：泛型方法的类型参数根据传入的实际参数的类型而定，不需要再调用时显示指明。</integer></string></string></string></string></string></t></p>
+<p>泛型方法就像泛型一样，使用起来比要求客户端转换输入参数并返回值的方法来的更加安全，也更加容易。就像类型一样，你应该确保新方法可以不用转换就能使用，这通常意味着要将他们进行返型化，并且就像类型一样，还应该将现有的方法泛型化，不会破坏现有的客户端。</p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java优化/">java优化</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-09-01T11:03:08.000Z"><a href="/2015/09/01/类和接口/">2015-09-01</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/09/01/类和接口/">类和接口</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>模块设计好坏的评判标准:在于这个模块对于外部的其他模块而言是否隐藏其内部数据和其他实现细节.<br>高内聚,低耦合..低耦合是用来度量模块与模块直接的依赖关系,也就是说,模块之间的依赖关系越低越好.<br>信息隐藏的概念:一个模块不需要知道其他模块的内部工作情况,它可以有效地解除组成系统的各模块之间的耦合关系,加速系统的开发速度.并且在调试的时候不影响其他的模块,它本身并不会带来很好的性能,但是可以有效地调节性能.提高了软件的可重用性.降低了构建大型系统的风险.</p>
+</blockquote>
+<p> java程序设计语言中提供了访问控制机制来决定类,接口和成员的可访问性.</p>
+<p>访问修饰符:</p>
+<ul>
+<li>私有的(private):只有在声明该成员的顶层类内部才可以访问这个成员</li>
+<li>包级私有的(package-private):声明该成员的包内部的任何类都可以访问这个成员.被称为”缺省访问级别”;</li>
+<li>受保护的(“protected”):声明该成员的类的子类可以访问这个成员,并且声明该成员的包内部的任何类也可以访问这个成员.</li>
+<li>共有的(public):在任何地方都可以访问该成员<br>注意：<code>如果方法覆盖了超类中的一个方法,子类中的访问级别就不允许低于超类中的访问级别.</code></li>
+</ul>
+<blockquote>
+<p>不能为了测试而将类,接口或者成员变成包的导出的API部分.<br>实力域不能是公有的,包含共有可变域的类并不是线程安全的.</p>
+<p>长度非0的数组总是可变的,所以类具有公有的final数组域.或者返回这种域的访问方法,这几乎总是错误的.<br>总而言之,应始终尽可能地降低可访问性,在仔细地设计了一个最小的共有API之后应防止把任何散乱的类,接口和成员变成API的一部分,处了公有静态final域的特殊情形之外,公有类都不应该包含公有域,并且要确保共有静态final域所引用的对象都是不可变的.</p>
+</blockquote>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java编程/">java编程</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-08-20T08:50:36.000Z"><a href="/2015/08/20/请不要在新代码中使用原生态类型/">2015-08-20</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/08/20/请不要在新代码中使用原生态类型/">请不要在新代码中使用原生态类型</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>泛型的概念：生命中具有一个或者多个类型参数的类或者接口，泛型类和接口统称为泛型。<br>每种泛型定义一种参数化的类型，构成格式为：List<string>（字符串列表），表示元素类型为String的列表<br>每个泛型都定义了一个原生态类型，即不带任何实际类型参数的泛型名称。如：List</string></p>
+<p>private final Collection<stamp> stamps = …<br>通过这条声明，编译器知道stamps应该只包含Stamp实例，并给予保证，并且从集合中删除元素不需要进行手工转换。<br>如果使用原生态类型，就失掉了泛型在安全性和表述性方面的优势，但是还是允许使用原生态类型的。并且能够与使用泛型的新代码互用，才能将参数化类型的实例传递给那些被设计成普通类型的方法，这种需求被称作移植兼容性，促成了支持原生态类型的决定。</stamp></p>
+<p>注意：可以将List<string>传递给类型List的参数，但是不能将它传递给类型List<object>的参数，泛型有子类型化的规则，List<string>是原生态类型List的子类型，而不是参数化类型List<object>的子类型。如果使用像List这样的原生态类型，就会失掉类型安全性，但是如果使用像List<object>这样的参数化类型，就不会。</object></object></string></object></string></p>
+<p>无限制的通配符类型：如果要使用泛型，但是不确定或者不关心实际的参数类型，就可以使用一个问号代替，符号表示：&lt;?&gt;<br>通配符类型和原生态类型的区别：通配符类型是安全的，但是原生态类型则不安全。由于可以将任何元素放进使用原生态类型的集合中，因此很容易破坏该集合的类型约束条件，但是不能将任何元素（null除外）放到Collection&lt;?&gt;中。</p>
+<p>不要在新代码中使用原生态类型<br>两个例外：两者都源于“泛型信息可以在运行时被擦除”，<br>1.在类文字中必须使用原生态类型，规范不允许使用参数化类型，<br>2.与instanceof有关，泛型信息可以在运行时被擦除，在参数化类型而非无限制通配符的类型上使用instanceof是非法的。</p>
+<p>Set<object>是个参数化类型，表示可以包含任何对象类型的一个集合<br>Set&lt;?&gt;是一个通配符类型，表示只能包含某种未知对象类型的一个集合<br>Set是一个原生态类型，它脱离了泛型系统。<br>总之，原生态类型是不安全的</object></p>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/java注意事项/">java注意事项</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
   <article class="post">
   
   <div class="post-content">
@@ -263,135 +412,11 @@
 
 
 
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-08-01T04:42:12.000Z"><a href="/2015/08/01/慎用可变参数/">2015-08-01</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/08/01/慎用可变参数/">慎用可变参数</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>在java1.5发行版本中增加了可变参数的方法,可以接受0个或者多个指定类型的参数.不过,最好在使用可变参数前增加一个只有一个参数的方法,来提高性能或者代码可读性.可变参数是为printf而设计的,为了核心地反射机制.利用可变参数可以使printf和反射机制都极大地收益.<br>不必改造具有final数组参数的每个方法,只当确定是在数量不定的值上执行调用时才使用可变参数.<br>在重视性能的情况下,使用可变参数机制要特别小心,可变参数的每次调用都会导致进行一次数组分配和初始化.<br>因此,应该谨慎考虑使用可变参数,提高开发效率.</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/java注意事项/">java注意事项</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-07-31T08:40:58.000Z"><a href="/2015/07/31/慎用重载/">2015-07-31</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/07/31/慎用重载/">慎用重载</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>重载：在同一个类的内部，方法名字相同，参数列表不同的方法，称之为方法的重载。 与返回类型无关。<br>参数列表不同：个数不同、类型不同、顺序不同<br>要调用哪个重载方法是在编译时做出决定的,对于重载方法的选择是静态的,而对于被覆盖的方法的选择是动态的,选择被覆盖的方法的正确版本是在运行时进行的,选择的依据是被调用方法所在的对象的运行时类型,<br>子类重写父类的方法覆盖):当一个子类包含的方法的声明与祖先类中的方法声明具有同样的签名时,父类的方法就被覆盖了,如果方法是在该子类的实例上被调用的,那么子类的覆盖方法将被执行.<br>但是,应该避免胡乱地使用重载机制:安全而保守的策略是:永远不要导出两个具有想同参数数目的重载方法,也就是说始终给方法起不同的名称,而不使用重载机制.一般情况下,对于多个具有相同参数数目的方法来说,应该尽量避免重载方法,如果正在改造一个现有的类以实现新的接口,就应该保证当传递同样的参数时,所有重载方法的行为必须一致.</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-  
-  <div class="tags">
-    <a href="/tags/java注意事项/">java注意事项</a>
-  </div>
-
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
-  <article class="post">
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-07-22T10:27:27.000Z"><a href="/2015/07/22/覆盖equals时请遵守通用约定/">2015-07-22</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/07/22/覆盖equals时请遵守通用约定/">覆盖equals时请遵守通用约定</a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>Object类虽然是一个具体类，但是设计它主要是为了扩展，它的所有非final方法（equals、hashCode、toString、finalize）都是被设计成是要被覆盖的。<br>不必覆盖equals方法的情况：<br>    1.类的每个实例本质上都是唯一的；<br>    2.不关心类是否提供了“逻辑相等”的测试功能；<br>    3.超类已经覆盖了equals，从超类继承过来的行为对于子类也是合适的；<br>    4.类是私有的或是包级私有的，可以确定它的equals方法永远不会被调用。<br>什么时候需要覆盖？<br>     如果类具有自己独特的“逻辑相等”概念（不同于对象等同的概念），而且超类还没有覆盖equals以实现期望的行为，此时需覆盖equals方法。<br>在覆盖equals方法时，必须遵守的约定：<br>1.自反性：对于任何非null的引用值x，x.equals(x)必须返回true;<br>2.对称性：对于任何非null的引用值x和y,当且仅当y.equals(x)返回true时，x.equals(y)必须返回true;<br>3.传递性：对于任何非null的引用值x,y和z,如果x.equals(y)和y.equals(z)都返回true，那么x.equals(z)也必须返回true;<br>4.一致性：对于任何非null的引用值x和y,只要equals的比较操作在对象中所用的信息没有被修改，多次调用x.equals(y)就会一致地返回true，或者一致地返回false。<br>综合以上所有的要求，实现高质量equals方法的的诀窍：<br>1.使用==操作符检查“参数是否为这个对象的引用”。这只是一种性能优化，如果操作有可能昂贵，就值得这么做；<br>2.使用instanceof操作符检查“参数是否为正确的类型”；<br>3.把参数转换成正确的类型；<br>4.对于该类中的每个“关键”域，检查参数中的域是否与该对象中对应的域相匹配；<br>5.当编写完equals方法之后，应该检查它是否是对称的、传递的、一致的。</p>
-
-      
-    </div>
-    
-    <footer>
-        <div class="alignright">
-          
-          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
-        </div>
-        
-        
-        <!-- partial('post/share') -->
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Vorherige Seite</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Nächste Seite &raquo;</a>
   </nav>
 
 </nav>
@@ -399,7 +424,7 @@
     <aside id="sidebar" class="alignright">
   <div class="search">
   <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="search" name="q" results="0" placeholder="Suche">
     <input type="hidden" name="q" value="site:yoursite.com">
   </form>
 </div>
@@ -408,8 +433,12 @@
 
   
 <div class="widget tag">
-  <h3 class="title">Recent Posts</h3>
+  <h3 class="title">Neueste Artikel</h3>
   <ul class="entry">
+    
+      <li>
+        <a href="/2018/11/01/dubbo-二/">dubbo(二)</a>
+      </li>
     
       <li>
         <a href="/2018/09/16/基本类型优于装箱基本类型/">基本类型优于装箱基本类型</a>
@@ -427,10 +456,6 @@
         <a href="/2017/02/03/工厂方法模式/">工厂方法模式</a>
       </li>
     
-      <li>
-        <a href="/2015/11/01/dubbo-一/">dubbo(一)</a>
-      </li>
-    
   </ul>
 </div>
 
@@ -442,6 +467,8 @@
   
     <li><a href="/tags/String/">String</a><small>1</small></li>
   
+    <li><a href="/tags/dubbo/">dubbo</a><small>5</small></li>
+  
     <li><a href="/tags/java优化/">java优化</a><small>6</small></li>
   
     <li><a href="/tags/java注意事项/">java注意事项</a><small>4</small></li>
@@ -452,7 +479,7 @@
   
     <li><a href="/tags/设计模式/">设计模式</a><small>2</small></li>
   
-    <li><a href="/tags/集群/">集群</a><small>4</small></li>
+    <li><a href="/tags/集群/">集群</a><small>2</small></li>
   
   </ul>
 </div>
@@ -460,9 +487,9 @@
 
   
 <div class="widget tagcloud">
-  <h3 class="title">Tag Cloud</h3>
+  <h3 class="title">Tag-Cloud</h3>
   <div class="entry">
-    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 17.5px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 15px;">java编程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a> <a href="/tags/集群/" style="font-size: 17.5px;">集群</a>
+    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/dubbo/" style="font-size: 18px;">dubbo</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 16px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 14px;">java编程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a> <a href="/tags/集群/" style="font-size: 12px;">集群</a>
   </div>
 </div>
 
