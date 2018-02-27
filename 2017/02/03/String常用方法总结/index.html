@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  
+  <title>String常用方法总结 | 靳平の博客</title>
+  <meta name="author" content="jinping Tinner" />
+
+  
+  <meta name="description" content="一、String类&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;String类在java.lang包中，java使用String类创建一个字符串变量，字符串变量属于对象。java把String类声明为final类。String类对象创建之后不能修改，由0或多个字符组成，包含" />
+  
+
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+  <meta property="og:title" content="String常用方法总结" />
+  <meta property="og:site_name" content="靳平の博客" />
+
+  
+  
+
+  
+    <meta property="og:image" content="" />
+  
+
+  
+  <link href="/css/images/favicon.ico" rel="icon" />
+  
+
+  <link rel="alternate" href="/atom.xml" title="靳平の博客" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+
+
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">靳平の博客</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">我的主页</a></li>
+    
+      <li><a href="/about">关于我</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2017-02-03T11:48:11.000Z"><a href="/2017/02/03/String常用方法总结/">2017-02-03</a></time>
+      
+      
+  
+    <h1 class="title">String常用方法总结</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="一、String类"><a href="#一、String类" class="headerlink" title="一、String类"></a>一、String类</h2><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String类在java.lang包中，java使用String类创建一个字符串变量，字符串变量属于对象。java把String类声明为final类。String类对象创建之后不能修改，由0或多个字符组成，包含在一对双引号之间。<br><br><br></p>
+<h2 id="二、String类对象的创建"><a href="#二、String类对象的创建" class="headerlink" title="二、String类对象的创建"></a>二、String类对象的创建</h2><p> 字符串声明：String stringName;<br> 字符串创建：stringName = new String(字符串常量);或stringName = 字符串常量;<br><br><br></p>
+<h2 id="三、String类常用方法"><a href="#三、String类常用方法" class="headerlink" title="三、String类常用方法"></a>三、String类常用方法</h2><p> 1.求字符串长度：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int length()   <span class="comment">//返回该字符串的长度</span></span><br></pre></td></tr></table></figure></p>
+<p> 2.求字符串某一位置字符:<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public char charAt(int index) <span class="comment">//返回字符串中指定位置的字符</span></span><br></pre></td></tr></table></figure></p>
+<p> 3.提取子串<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public <span class="built_in">String</span> subString(int beginIndex) <span class="comment">//该方法从beginIndex位置起，从当前字符串中取出剩余的字符作为一个新的字符串返回</span></span><br><span class="line">public <span class="built_in">String</span> subString(int n1,int n2) <span class="comment">//该方法从n1位置起，从当前字符中取出到n2-1位置的字符作为一个新的字符串返回</span></span><br></pre></td></tr></table></figure></p>
+<p> 4.字符串比较<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public int compareTo(<span class="built_in">String</span> anotherStr)<span class="comment">//该方法对字符串内容按字典顺序进行大小比较，通过返回的整数值指明当前字符串与参数字符串的大小关系，若当前对象比参数大则返回正整数，反之返回负整数，相等返回0</span></span><br><span class="line">public int CompareToIgnore(<span class="built_in">String</span> anotherStr)<span class="comment">//与compareTo类似，但是忽略大小写</span></span><br><span class="line">public boolean equals(<span class="built_in">Object</span> anotherObj) <span class="comment">//两个字符串相等的时候返回true</span></span><br><span class="line">puiblic boolean equalsIgnoreCase(<span class="built_in">String</span> anoStr)<span class="comment">//忽略大小写</span></span><br></pre></td></tr></table></figure></p>
+<p> 5.字符串连接<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public <span class="built_in">String</span> concat(<span class="built_in">String</span> str)<span class="comment">//将参数中的字符串str连接到当前字符串的后面，类似于"+"</span></span><br></pre></td></tr></table></figure></p>
+<p> 6.字符串中单个字符查找<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public int indexOf(int ch/<span class="built_in">String</span> str)<span class="comment">//返回当前字符或子串在当前字符串中首次出现的位置，没有出现返回-1</span></span><br><span class="line">public int indexOf(int ch/<span class="built_in">String</span> str,int fromIndex)<span class="comment">//与之前类似，区别在于从fromIndex处开始查找</span></span><br><span class="line">public int lastIndexOf(int ch/<span class="built_in">String</span> str)<span class="comment">//该方法与第一种类似，区别在于该方法从字符串的末尾位置向前查找。</span></span><br><span class="line">public int lastIndexOf(int ch/<span class="built_in">String</span> str, int fromIndex)<span class="comment">//该方法与第二种方法类似，区别于该方法从fromIndex位置向前查找。</span></span><br></pre></td></tr></table></figure></p>
+<p> 7.字符串中字符的大小写转换<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public <span class="built_in">String</span> toLowerCase()<span class="comment">//返回当前字符串中所有字符转换成小写后的新串</span></span><br><span class="line">public <span class="built_in">String</span> toUpperCase()<span class="comment">//返回当前字符串中所有字符转换成大写后的新串</span></span><br></pre></td></tr></table></figure></p>
+<p> 8.字符串的替换<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public <span class="built_in">String</span> replace(char oldChar,char newChar)<span class="comment">//返回一个新的替换好的字符串</span></span><br><span class="line">public <span class="built_in">String</span> replaceFirst(<span class="built_in">String</span> regex,<span class="built_in">String</span> replacrment)<span class="comment">//该方法用字符replacement的内容替换当前字符串中遇到的第一个和字符串regex相匹配的子串，应将新的字符串返回。</span></span><br><span class="line">public <span class="built_in">String</span> replaceAll(<span class="built_in">String</span> regex, <span class="built_in">String</span> replacement)<span class="comment">//该方法用字符replacement的内容替换当前字符串中遇到的所有和字符串regex相匹配的子串，应将新的字符串返回。</span></span><br></pre></td></tr></table></figure></p>
+<p> 9.常用的方法：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span> trim()<span class="comment">//截去字符串两端的空格，但是对于中间的空格不处理</span></span><br><span class="line">boolean statWith(<span class="built_in">String</span> prefix)或boolean endWith(<span class="built_in">String</span> suffix)<span class="comment">//用来比较当前字符串的起始字符或子字符串prefix和终止字符或子字符串suffix是否和当前字符串相同，重载方法中同时还可以指定比较的开始位置offset。</span></span><br><span class="line">contains(<span class="built_in">String</span> str)<span class="comment">//判断参数s是否被包含在字符串中，并返回一个布尔类型的值。</span></span><br><span class="line"><span class="built_in">String</span>[] split(<span class="built_in">String</span> str)<span class="comment">//将str作为分隔符进行字符串分解，分解后的字字符串在字符串数组中返回。</span></span><br></pre></td></tr></table></figure></p>
+<p><br><br></p>
+<h2 id="四、字符串与基本数据类型的转换"><a href="#四、字符串与基本数据类型的转换" class="headerlink" title="四、字符串与基本数据类型的转换"></a>四、字符串与基本数据类型的转换</h2><h3 id="Ⅰ字符串转换为基本数据类型"><a href="#Ⅰ字符串转换为基本数据类型" class="headerlink" title="Ⅰ字符串转换为基本数据类型"></a>Ⅰ字符串转换为基本数据类型</h3><ol>
+<li>public static byte parseByte(String s)</li>
+<li>public static short parseShort(String s)</li>
+<li>public static short parseInt(String s)</li>
+<li>public static long parseLong(String s)</li>
+<li>public static float parseFloat(String s)</li>
+<li>public static double parseDouble(String s)</li>
+</ol>
+<h3 id="Ⅱ-基本数据类型转换为字符串类型"><a href="#Ⅱ-基本数据类型转换为字符串类型" class="headerlink" title="Ⅱ 基本数据类型转换为字符串类型"></a>Ⅱ 基本数据类型转换为字符串类型</h3><ol>
+<li>static String valueOf(char data[])</li>
+<li>static String valueOf(char data[], int offset, int count)</li>
+<li>static String valueOf(boolean b)</li>
+<li>static String valueOf(char c)</li>
+<li>static String valueOf(int i)</li>
+<li>static String valueOf(long l)</li>
+<li>static String valueOf(float f)</li>
+<li>static String valueOf(double d)</li>
+</ol>
+
+      
+    </div>
+    
+    <footer>
+        <div class="alignright">
+          
+          <a href='javascript:void(0)' class="share-link bdsharebuttonbox" data-cmd="more">分享</a>
+        </div>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/String/">String</a>
+  </div>
+
+        <!-- partial('post/share') -->
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Suche">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+  
+
+  
+<div class="widget tag">
+  <h3 class="title">Neueste Artikel</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2017/02/03/工厂模式/">工厂方法模式</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/工厂方法模式/">工厂方法模式</a>
+      </li>
+    
+      <li>
+        <a href="/2017/02/03/String常用方法总结/">String常用方法总结</a>
+      </li>
+    
+      <li>
+        <a href="/2016/09/16/基本类型优于装箱基本类型/">基本类型优于装箱基本类型</a>
+      </li>
+    
+      <li>
+        <a href="/2015/11/01/dubbo-二/">dubbo(二)</a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">Tags</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/String/">String</a><small>1</small></li>
+  
+    <li><a href="/tags/dubbo/">dubbo</a><small>5</small></li>
+  
+    <li><a href="/tags/java优化/">java优化</a><small>6</small></li>
+  
+    <li><a href="/tags/java注意事项/">java注意事项</a><small>4</small></li>
+  
+    <li><a href="/tags/java编程/">java编程</a><small>3</small></li>
+  
+    <li><a href="/tags/数据库/">数据库</a><small>1</small></li>
+  
+    <li><a href="/tags/设计模式/">设计模式</a><small>2</small></li>
+  
+    <li><a href="/tags/集群/">集群</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag-Cloud</h3>
+  <div class="entry">
+    <a href="/tags/String/" style="font-size: 10px;">String</a> <a href="/tags/dubbo/" style="font-size: 18px;">dubbo</a> <a href="/tags/java优化/" style="font-size: 20px;">java优化</a> <a href="/tags/java注意事项/" style="font-size: 16px;">java注意事项</a> <a href="/tags/java编程/" style="font-size: 14px;">java编程</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a> <a href="/tags/集群/" style="font-size: 12px;">集群</a>
+  </div>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  <p>
+  
+  &copy; 2018 jinping Tinner
+  
+  All rights reserved.</p>
+  <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</div>
+<div class="clearfix"></div>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script></footer>
+  <script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<div id='bg'></div>
+</body>
+</html>

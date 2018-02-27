@@ -3,20 +3,18 @@
 <head>
   <meta charset="utf-8" />
   
-  <title>当心字符串连接的性能 | 靳平の博客</title>
+  <title>基本类型优于装箱基本类型 | 靳平の博客</title>
   <meta name="author" content="jinping Tinner" />
 
   
-  <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;    字符串连接操作符(+)是把多个字符串合并为一个字符串的便利途径,但是它不适合运用在大规模的场景中.为连接n个字符串而重复地使用字符串连接操作符,需要n的平方级的时间,当两个字符串连接的时候,它们的内容都要拷贝
-
-为了获得" />
+  <meta name="description" content="什么是装箱类型？   &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java中包含8种基本数据类型和3中引用数据类型,其中每个基本数据类型都有一个对应的引用类型,称作装箱基本类型,装箱基本数据类型中对应于int,double和boolean的是Integer,Double和" />
   
 
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-  <meta property="og:title" content="当心字符串连接的性能" />
+  <meta property="og:title" content="基本类型优于装箱基本类型" />
   <meta property="og:site_name" content="靳平の博客" />
 
   
@@ -65,20 +63,29 @@
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-09-12T11:35:25.000Z"><a href="/2015/09/12/当心字符串连接的性能/">2015-09-12</a></time>
+        <time datetime="2016-09-16T02:38:31.000Z"><a href="/2016/09/16/基本类型优于装箱基本类型/">2016-09-16</a></time>
       
       
   
-    <h1 class="title">当心字符串连接的性能</h1>
+    <h1 class="title">基本类型优于装箱基本类型</h1>
   
 
     </header>
     <div class="entry">
       
-        <blockquote>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    字符串连接操作符(+)是把多个字符串合并为一个字符串的便利途径,但是它不适合运用在大规模的场景中.为连接n个字符串而重复地使用字符串连接操作符,需要n的平方级的时间,当两个字符串连接的时候,它们的内容都要拷贝</p>
-</blockquote>
-<h4 id="为了获得可以接受的性能-可以使用StringBuilder替代String-节省时间"><a href="#为了获得可以接受的性能-可以使用StringBuilder替代String-节省时间" class="headerlink" title="为了获得可以接受的性能,可以使用StringBuilder替代String,节省时间."></a>为了获得可以接受的性能,可以使用StringBuilder替代String,节省时间.</h4><h4 id="另一种方法是-使用字符数组-或者每次只处理一个字符串-而不是将它们组合起来"><a href="#另一种方法是-使用字符数组-或者每次只处理一个字符串-而不是将它们组合起来" class="headerlink" title="另一种方法是:使用字符数组,或者每次只处理一个字符串,而不是将它们组合起来."></a>另一种方法是:使用字符数组,或者每次只处理一个字符串,而不是将它们组合起来.</h4>
+        <h2 id="什么是装箱类型？"><a href="#什么是装箱类型？" class="headerlink" title="什么是装箱类型？"></a>什么是装箱类型？</h2><p>   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java中包含8种基本数据类型和3中引用数据类型,其中每个基本数据类型都有一个对应的引用类型,称作装箱基本类型,装箱基本数据类型中对应于int,double和boolean的是Integer,Double和Boolean</p>
+<blockquote>
+<p>java 1.5之后增加了自动装箱和自动拆箱.</p>
+<p>在基本数据类型和装箱基本类型之间有三个主要区别:</p>
+<pre><code>1. 基本类型只有值,而装箱基本类型具有与他们的值不同的同一性;
+2. 基本类型只有功能完备的值,而每个装箱基本类型除了它对应基本类型的所有功能值之外,还有个非功能值:null;
+3. 基本类型通常比装箱基本类型更节省时间和空间.
+</code></pre><p>用到装箱基本类型的情况:</p>
+<pre><code>1. 作为集合中的元素,键和值,必须将装箱基本类型放在集合中;
+2. 在参数化类型中,必须使用装箱基本类型作为类型参数,因为java不允许使用基本类型;
+3. 进行反射的方法调用中,必须使用装箱基本类型.
+</code></pre></blockquote>
+
       
     </div>
     
@@ -91,7 +98,7 @@
         
   
   <div class="tags">
-    <a href="/tags/java编程/">java编程</a>
+    <a href="/tags/java优化/">java优化</a>
   </div>
 
         <!-- partial('post/share') -->
